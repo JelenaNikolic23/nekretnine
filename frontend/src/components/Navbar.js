@@ -26,7 +26,7 @@ function Header() {
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link " href="blog-grid.html">Zaposleni</a>
+                            <a className="nav-link " href="blog-grid.html">Agenti</a>
                         </li>
 
                         <li className="nav-item">
