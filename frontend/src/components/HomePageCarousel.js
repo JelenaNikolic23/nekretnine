@@ -29,7 +29,7 @@ function HomePageCarousel() {
                                 <div className="col-lg-8">
                                     <div className="intro-body">
                                         <p className="intro-title-top">
-                                            Vise od 10 gradova <nr />
+                                            Vise od 10 gradova <br />
                                             u Republici Srbiji
                                         </p>
                                         <h1 className="intro-title mb-4 ">
