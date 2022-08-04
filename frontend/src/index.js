@@ -8,6 +8,11 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import 'animate.css/animate.css'
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -113,117 +118,6 @@ reportWebVitals();
     e.preventDefault()
     body.classList.remove('box-collapse-open')
     body.classList.add('box-collapse-closed')
-  })
-
-  /**
-   * Intro Carousel
-   */
-  // new Swiper('.intro-carousel', {
-  //   speed: 600,
-  //   loop: true,
-  //   autoplay: {
-  //     delay: 2000,
-  //     disableOnInteraction: false
-  //   },
-  //   slidesPerView: 'auto',
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //     type: 'bullets',
-  //     clickable: true
-  //   }
-  // });
-
-  // /**
-  //  * Property carousel
-  //  */
-  // new Swiper('#property-carousel', {
-  //   speed: 600,
-  //   loop: true,
-  //   autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: false
-  //   },
-  //   slidesPerView: 'auto',
-  //   pagination: {
-  //     el: '.propery-carousel-pagination',
-  //     type: 'bullets',
-  //     clickable: true
-  //   },
-  //   breakpoints: {
-  //     320: {
-  //       slidesPerView: 1,
-  //       spaceBetween: 20
-  //     },
-
-  //     1200: {
-  //       slidesPerView: 3,
-  //       spaceBetween: 20
-  //     }
-  //   }
-  // });
-
-  // /**
-  //  * News carousel
-  //  */
-  // new Swiper('#news-carousel', {
-  //   speed: 600,
-  //   loop: true,
-  //   autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: false
-  //   },
-  //   slidesPerView: 'auto',
-  //   pagination: {
-  //     el: '.news-carousel-pagination',
-  //     type: 'bullets',
-  //     clickable: true
-  //   },
-  //   breakpoints: {
-  //     320: {
-  //       slidesPerView: 1,
-  //       spaceBetween: 20
-  //     },
-
-  //     1200: {
-  //       slidesPerView: 3,
-  //       spaceBetween: 20
-  //     }
-  //   }
-  // });
-
-  // /**
-  //  * Testimonial carousel
-  //  */
-  // new Swiper('#testimonial-carousel', {
-  //   speed: 600,
-  //   loop: true,
-  //   autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: false
-  //   },
-  //   slidesPerView: 'auto',
-  //   pagination: {
-  //     el: '.testimonial-carousel-pagination',
-  //     type: 'bullets',
-  //     clickable: true
-  //   }
-  // });
-
-  // /**
-  //  * Property Single carousel
-  //  */
-  // new Swiper('#property-single-carousel', {
-  //   speed: 600,
-  //   loop: true,
-  //   autoplay: {
-  //     delay: 5000,
-  //     disableOnInteraction: false
-  //   },
-  //   pagination: {
-  //     el: '.property-single-carousel-pagination',
-  //     type: 'bullets',
-  //     clickable: true
-  //   }
-  // });
+  }) 
 
 })()
