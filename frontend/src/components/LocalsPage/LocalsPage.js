@@ -1,6 +1,7 @@
-import HousesAndFlatsList from "./HousesAndFlatsList";
+import LocalsList from "./LocalsList";
 
-function FlatsAndHousesPage() {
+
+function LocalsPage() {
     return (
         <>
             <section className="intro-single">
@@ -8,8 +9,8 @@ function FlatsAndHousesPage() {
                     <div className="row">
                         <div className="col-md-12 col-lg-8">
                             <div className="title-single-box text-start">
-                                <h1 className="title-single text-start">Kuce i stanovi</h1>
-                                <span className="color-text-a text-start">Stambeni objekti</span>
+                                <h1 className="title-single text-start">Lokali</h1>
+                                <span className="color-text-a text-start">Poslovni objekti</span>
                             </div>
                         </div>
                         <div className="col-md-12 col-lg-4">
@@ -19,7 +20,7 @@ function FlatsAndHousesPage() {
                                         <span>Pocetna</span>
                                     </li>
                                     <li className="breadcrumb-item active" aria-current="page">
-                                        Kuce i stanovi
+                                        Lokali
                                     </li>
                                 </ol>
                             </nav>
@@ -28,9 +29,9 @@ function FlatsAndHousesPage() {
                 </div>
             </section>
 
-            <HousesAndFlatsList />
+            <LocalsList />
         </>
     )
 }
 
-export default FlatsAndHousesPage;
+export default LocalsPage;
