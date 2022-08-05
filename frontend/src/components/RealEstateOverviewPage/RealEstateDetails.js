@@ -79,7 +79,7 @@ function RealEstateDetails() {
                             </div>
                         </div>
                     </div>
-                    <div className="amenities-list color-text-a">
+                    <div className="amenities-list color-text-a text-start">
                         <ul className="list-a no-margin">
                             <li>Terasa</li>
                             <li>Prikljucak za kablovsku</li>
