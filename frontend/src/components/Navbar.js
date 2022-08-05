@@ -1,5 +1,24 @@
+import { useEffect } from "react";
+import { select, onscroll } from "../utils"
 
 function Header() {
+
+    useEffect(() => {
+
+        let selectHNavbar = select('.navbar-default')
+        if (selectHNavbar) {
+            onscroll(document, () => {
+                if (window.scrollY > 100) {
+                    selectHNavbar.classList.add('navbar-reduce')
+                    selectHNavbar.classList.remove('navbar-trans')
+                } else {
+                    selectHNavbar.classList.remove('navbar-reduce')
+                    selectHNavbar.classList.add('navbar-trans')
+                }
+            })
+        }
+    }, []);
+
     return (
         <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
             <div className="container">

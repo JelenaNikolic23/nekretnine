@@ -3,8 +3,6 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 function HomePageCarousel() {
     return (
-
-
         <Swiper
             spaceBetween={0}
             slidesPerView={1}

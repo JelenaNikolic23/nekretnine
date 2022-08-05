@@ -339,7 +339,7 @@ function AgentsList() {
                         <nav className="pagination-a">
                             <ul className="pagination justify-content-end">
                                 <li className="page-item disabled">
-                                    <a className="page-link" href="#" tabindex="-1">
+                                    <a className="page-link" href="#" tabIndex="-1">
                                         <span className="bi bi-chevron-left"></span>
                                     </a>
                                 </li>

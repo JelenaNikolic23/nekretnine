@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -12,6 +13,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+
+import { select } from './utils.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,18 +33,6 @@ reportWebVitals();
   "use strict";
 
   /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
-
-  /**
    * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
@@ -53,45 +44,6 @@ reportWebVitals();
         selectEl.addEventListener(type, listener)
       }
     }
-  }
-
-  /**
-   * Easy on scroll event listener 
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Toggle .navbar-reduce
-   */
-  let selectHNavbar = select('.navbar-default')
-  if (selectHNavbar) {
-    onscroll(document, () => {
-      if (window.scrollY > 100) {
-        selectHNavbar.classList.add('navbar-reduce')
-        selectHNavbar.classList.remove('navbar-trans')
-      } else {
-        selectHNavbar.classList.remove('navbar-reduce')
-        selectHNavbar.classList.add('navbar-trans')
-      }
-    })
-  }
-
-  /**
-   * Back to top button
-   */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop.classList.add('active')
-      } else {
-        backtotop.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
   }
 
   /**
