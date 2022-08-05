@@ -1,4 +1,5 @@
-import HomePageCarousel from "../HomePageCarousel";
+import HomePageCarousel from "./HomePageCarousel";
+
 
 function HomePage() {
     return (

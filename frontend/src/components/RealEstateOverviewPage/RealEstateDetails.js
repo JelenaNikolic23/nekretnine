@@ -14,7 +14,7 @@ function RealEstateDetails() {
                     <div className="property-summary">
                         <div className="row">
                             <div className="col-sm-12">
-                                <div className="title-box-d section-t4">
+                                <div className="title-box-d section-t4 text-start">
                                     <h3 className="title-d">Podaci o nekretnini</h3>
                                 </div>
                             </div>
