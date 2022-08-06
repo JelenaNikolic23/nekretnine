@@ -28,29 +28,29 @@ function Header() {
                     <span></span>
                     <span></span>
                 </button>
-                <NavLink className="navbar-brand text-brand" to={"/"} activeClassName={"active"}>Super<span className="color-b">Nekretnine</span></NavLink>
+                <NavLink className="navbar-brand text-brand" to={"/"} activeclassname={"active"}>Super<span className="color-b">Nekretnine</span></NavLink>
 
                 <div className="navbar-collapse collapse justify-content-center" id="navbarDefault">
                     <ul className="navbar-nav">
 
                         <li className="nav-item">
-                            <NavLink to={"/"} className="nav-link" activeClassName={"active"}>Pocetna</NavLink>
+                            <NavLink to={"/"} className="nav-link" activeclassname={"active"}>Pocetna</NavLink>
                         </li>
 
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nekretnine</a>
                             <div className="dropdown-menu">
-                                <NavLink className="dropdown-item " to={"/houses-and-flats"} activeClassName={"active"}>Stanovi/Kuce</NavLink>
-                                <NavLink className="dropdown-item " to={"/locals"} activeClassName={"active"}>Lokali</NavLink>
+                                <NavLink className="dropdown-item " to={"/houses-and-flats"} activeclassname={"active"}>Stanovi/Kuce</NavLink>
+                                <NavLink className="dropdown-item " to={"/locals"} activeclassname={"active"}>Lokali</NavLink>
                             </div>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink className="nav-link " to={"/agents"} activeClassName={"active"}>Agenti</NavLink>
+                            <NavLink className="nav-link " to={"/agents"} activeclassname={"active"}>Agenti</NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <NavLink className="nav-link " to={"/contact"} activeClassName={"active"}>Kontakt</NavLink>
+                            <NavLink className="nav-link " to={"/contact"} activeclassname={"active"}>Kontakt</NavLink>
                         </li>
 
                     </ul>

@@ -9,6 +9,7 @@ import Header from './components/Navbar';
 import RealEstateOverviewPage from './components/RealEstateOverviewPage/RealEstateOverviewPage';
 import { Route, Routes } from "react-router-dom";
 import HomePage from './components/HomePage/HomePage';
+import SearchingMenu from './components/Common/SearchingMenu';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" exact element={<HomePage />} />
         <Route component={<HomePage />} />
       </Routes>
+      <SearchingMenu />
       <Footer />
       <ScrollToTopButton />
     </div>
