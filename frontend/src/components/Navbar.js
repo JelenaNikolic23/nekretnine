@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { select, onscroll } from "../utils"
 
 function Header() {
@@ -56,9 +56,16 @@ function Header() {
                     </ul>
                 </div>
 
-                <button type="button" className="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-                    <i className="bi bi-search"></i>
-                </button>
+                
+                <div className="d-flex" style={{columnGap: "1rem"}}>
+                    <button type="button" className="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+                        <i className="bi bi-search"></i>
+                    </button>
+
+                    <button type="button" className="btn" style={{borderColor: "#2eca6a"}}>
+                        <Link className="text-black fw-bold" style={{textDecoration: 'none'}} to={"/login"}>Login</Link>
+                    </button>
+                </div>
 
             </div>
         </nav>

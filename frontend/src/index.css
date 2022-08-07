@@ -1352,6 +1352,15 @@ a:hover {
   letter-spacing: 0.03em;
 }
 
+.price-b {
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+  background-color: #2eca6a;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 .card-footer-a {
   width: 100%;
   position: absolute;

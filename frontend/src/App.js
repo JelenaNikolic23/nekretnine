@@ -10,18 +10,28 @@ import RealEstateOverviewPage from './components/RealEstateOverviewPage/RealEsta
 import { Route, Routes } from "react-router-dom";
 import HomePage from './components/HomePage/HomePage';
 import SearchingMenu from './components/Common/SearchingMenu';
+import NotFoundPage from './components/NotFoundPage';
+import LoginPage from './components/LoginPage';
+import { useEffect } from 'react';
 
 function App() {
+
+  useEffect(() => {
+    document.title = 'SuperNekretnine';
+  });
+
   return (
     <div className="App">
       <Header />
       <Routes>
+        <Route path="/locals/:id" exact element={<RealEstateOverviewPage />} />
         <Route path="/contact" exact element={<ContactPage />} />
         <Route path="/houses-and-flats" exact element={<FlatsAndHousesPage />} />
         <Route path="/locals" exact element={<LocalsPage />} />
         <Route path="/agents" exact element={<AgentsPage />} />
-        <Route path="/" exact element={<HomePage />} />
-        <Route component={<HomePage />} />
+        <Route path="/login" exact element={<LoginPage />} />
+        <Route path="/" index element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <SearchingMenu />
       <Footer />

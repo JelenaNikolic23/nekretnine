@@ -93,7 +93,44 @@ function SearchingMenu() {
                                     <input min={50001} type="number" className="form-control form-control-a" id="max-price" />
                                 </div>
                             </div>
-                            <div className="col-md-12">
+
+                            <div>
+                                <button type="button" className="btn btn-b-n " data-bs-toggle="collapse" data-bs-target="#advancedSearch">
+                                    <i className="bi bi-plus-lg"></i>
+                                    <span>Napredna pretraga</span>
+                                </button>
+                            </div>
+
+                            <div className="collapse my-2 px-5" id="advancedSearch">
+                                <div className="row">
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="chekcboxParkingMesto" className="form-check-input" />
+                                        <label className="form-label">Parking mesto</label>
+                                    </div>
+
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxTerasa" className="form-check-input" />
+                                        <label className="form-label">Terasa</label>
+                                    </div>
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxOstava" className="form-check-input" />
+                                        <label className="form-label">Ostava</label>
+                                    </div>
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxPrikljucakKablovska" className="form-check-input" />
+                                        <label className="form-label">Prikljucak za kablovsku</label>
+                                    </div>
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxZajednickaProstorija" className="form-check-input" />
+                                        <label className="form-label">Zajednicka prostorija</label>
+                                    </div>
+                                </div>
+                                
+                                
+
+                            </div>
+
+                            <div className="col-md-12 mt-3">
                                 <button type="submit" className="btn btn-b">Pretraga</button>
                             </div>
                         </div>

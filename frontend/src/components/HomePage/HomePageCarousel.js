@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { Link } from "react-router-dom";
 
 function HomePageCarousel() {
     return (
@@ -31,11 +32,17 @@ function HomePageCarousel() {
                                             u Republici Srbiji
                                         </p>
                                         <h1 className="intro-title mb-4 ">
-                                            <span className="color-b">Stambeni objekti</span> 
+                                            <span className="color-b">Stambeni objekti</span>
                                             <br /> Kuce i stanovi
                                         </h1>
                                         <p className="intro-subtitle intro-price">
                                             <span className="price-a">od 50.000€</span>
+                                        </p>
+                                        <p className="intro-subtitle intro-price">
+                                            <Link to={"houses-and-flats"} className="price-b" style={{textDecoration: "none"}}>
+                                                Detaljnije
+                                                <i class="bi bi-chevron-right"></i>
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>
@@ -62,6 +69,12 @@ function HomePageCarousel() {
                                         </h1>
                                         <p className="intro-subtitle intro-price">
                                             <span className="price-a">od 15.000€</span>
+                                        </p>
+                                        <p className="intro-subtitle intro-price">
+                                            <Link to={"locals"} className="price-b" style={{textDecoration: "none"}}>
+                                                Detaljnije
+                                                <i class="bi bi-chevron-right"></i>
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>
