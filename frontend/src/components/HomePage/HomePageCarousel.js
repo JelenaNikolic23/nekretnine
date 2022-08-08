@@ -39,9 +39,9 @@ function HomePageCarousel() {
                                             <span className="price-a">od 50.000€</span>
                                         </p>
                                         <p className="intro-subtitle intro-price">
-                                            <Link to={"houses-and-flats"} className="price-b" style={{textDecoration: "none"}}>
+                                            <Link to={"homes"} className="price-b" style={{textDecoration: "none"}}>
                                                 Detaljnije
-                                                <i class="bi bi-chevron-right"></i>
+                                                <i className="bi bi-chevron-right"></i>
                                             </Link>
                                         </p>
                                     </div>
@@ -73,7 +73,7 @@ function HomePageCarousel() {
                                         <p className="intro-subtitle intro-price">
                                             <Link to={"locals"} className="price-b" style={{textDecoration: "none"}}>
                                                 Detaljnije
-                                                <i class="bi bi-chevron-right"></i>
+                                                <i className="bi bi-chevron-right"></i>
                                             </Link>
                                         </p>
                                     </div>

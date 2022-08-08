@@ -31,8 +31,27 @@ const onscroll = (el, listener) => {
     }
   }
 
+   /**
+   * Preloader
+   */
+    function showLoader() {
+      let preloader = select('#preloader');
+      if (preloader) {
+          preloader.style.display = "block";
+      }
+    }
+
+    function hideLoader() {
+      let preloader = select('#preloader');
+      if (preloader) {
+          preloader.style.display = "none";
+      }
+    }
+
 export {
     select,
     onscroll,
-    on
+    on,
+    showLoader,
+    hideLoader
 }
