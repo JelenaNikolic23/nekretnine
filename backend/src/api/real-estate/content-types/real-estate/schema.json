@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "real_estates",
+  "info": {
+    "singularName": "real-estate",
+    "pluralName": "real-estates",
+    "displayName": "RealEstate",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "lokal",
+        "stan/kuca"
+      ]
+    },
+    "location": {
+      "type": "string"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::city.city"
+    },
+    "agent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::agent.agent"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "surface": {
+      "type": "decimal"
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "bathrooms": {
+      "type": "integer"
+    },
+    "garages": {
+      "type": "integer"
+    },
+    "balcons": {
+      "type": "integer"
+    },
+    "cableNetwork": {
+      "type": "boolean"
+    },
+    "keepingRoom": {
+      "type": "boolean"
+    },
+    "parkingPlace": {
+      "type": "boolean"
+    },
+    "sharedRoom": {
+      "type": "boolean"
+    },
+    "pictures": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
