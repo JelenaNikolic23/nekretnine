@@ -1,7 +1,7 @@
 import PageIntro from "../Common/PageIntro";
-import HousesAndFlatsList from "./HousesAndFlatsList";
+import HomesList from "./HomesList";
 import { useEffect, useState } from "react";
-import { getHousesAndFlats } from "../../services/RealEstateService";
+import { getHomes } from "../../services/RealEstateService";
 import Loader from "../Common/Loader";
 import { hideLoader } from "../../utils";
 
@@ -17,7 +17,7 @@ function HomesPage() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        getHousesAndFlats().then(response => {
+        getHomes().then(response => {
             if (response.status !== 200) {
 
             }
@@ -32,6 +32,7 @@ function HomesPage() {
                     id: item.id,
                     title: item.attributes.title,
                     location: item.attributes.location,
+                    city: item.attributes.city.data.attributes.name,
                     bedrooms: item.attributes.bedrooms,
                     bathrooms: item.attributes.bathrooms,
                     garages: item.attributes.garages,
@@ -50,7 +51,7 @@ function HomesPage() {
     return (
         <>
             <PageIntro data={pageIntroProps} />
-            <HousesAndFlatsList items={items} />
+            <HomesList items={items} />
             <Loader />
         </>
     )

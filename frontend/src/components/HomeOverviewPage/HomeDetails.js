@@ -1,4 +1,4 @@
-function RealEstateDetails() {
+function HomeDetails(props) {
     return (
         <div className="col-sm-12">
             <div className="row justify-content-between">
@@ -6,7 +6,7 @@ function RealEstateDetails() {
                     <div className="property-price d-flex justify-content-center foo">
                         <div className="card-header-c d-flex">
                             <div className="card-box-ico">
-                                <span className="title-c">15000</span>
+                                <span className="title-c">{props.home.price}</span>
                                 <span className="bi bi-currency-euro"></span>
                             </div>
                         </div>
@@ -15,7 +15,7 @@ function RealEstateDetails() {
                         <div className="row">
                             <div className="col-sm-12">
                                 <div className="title-box-d section-t4 text-start">
-                                    <h3 className="title-d">Podaci o nekretnini</h3>
+                                    <h3 className="title-d">{props.home.title}</h3>
                                 </div>
                             </div>
                         </div>
@@ -23,37 +23,41 @@ function RealEstateDetails() {
                             <ul className="list">
                                 <li className="d-flex justify-content-between">
                                     <strong>ID nekretnine:</strong>
-                                    <span>1134</span>
+                                    <span>{props.home.id}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Lokacija:</strong>
-                                    <span>Grbavica, Novi Sad</span>
+                                    <span>{props.home.location}, {props.home.city}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Tip nekretnine:</strong>
-                                    <span>Stan</span>
+                                    <span>{props.home.type}</span>
                                 </li>
-                                <li className="d-flex justify-content-between">
+                                {/* <li className="d-flex justify-content-between">
                                     <strong>Status:</strong>
                                     <span>Aktivan</span>
-                                </li>
+                                </li> */}
                                 <li className="d-flex justify-content-between">
                                     <strong>Povrsina:</strong>
-                                    <span>340m
+                                    <span>{props.home.surface}m
                                         <sup>2</sup>
                                     </span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Sobe:</strong>
-                                    <span>4</span>
+                                    <span>{props.home.bedrooms}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Kupatila:</strong>
-                                    <span>2</span>
+                                    <span>{props.home.bathrooms}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Garaze:</strong>
-                                    <span>1</span>
+                                    <span>{props.home.garages}</span>
+                                </li>
+                                <li className="d-flex justify-content-between">
+                                    <strong>Terase:</strong>
+                                    <span>{props.home.balcons}</span>
                                 </li>
                             </ul>
                         </div>
@@ -69,7 +73,7 @@ function RealEstateDetails() {
                     </div>
                     <div className="property-description">
                         <p className="description color-text-a text-start">
-                            Prelep stan u mirnom delu Novog Sada.
+                            {props.home.description}
                         </p>
                     </div>
                     <div className="row section-t3">
@@ -81,11 +85,10 @@ function RealEstateDetails() {
                     </div>
                     <div className="amenities-list color-text-a text-start">
                         <ul className="list-a no-margin">
-                            <li>Terasa</li>
-                            <li>Prikljucak za kablovsku</li>
-                            <li>Ostava</li>
-                            <li>Parking mesto</li>
-                            <li>Zajednicka prostorija</li>
+                            {props.home.keepingRoom && <li>Ostava</li>}
+                            {props.home.cableNetwork && <li>Prikljucak za kablovsku</li>}
+                            {props.home.parkingPlace && <li>Parking mesto</li>}
+                            {props.home.sharedRoom && <li>Zajednicka prostorija</li>}
                         </ul>
                     </div>
                 </div>
@@ -94,4 +97,4 @@ function RealEstateDetails() {
     )
 }
 
-export default RealEstateDetails;
+export default HomeDetails;

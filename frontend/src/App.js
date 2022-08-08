@@ -2,11 +2,11 @@ import './App.css';
 import AgentsPage from './components/AgentsPage/AgentsPage';
 import ScrollToTopButton from './components/Common/ScrollToTopButton';
 import ContactPage from './components/ContactPage/ContactPage';
-import HomesPage from './components/FlatsAndHousesPage/FlatsAndHousesPage';
+import HomesPage from './components/HomesPage/HomesPage';
 import Footer from './components/Footer';
 import LocalsPage from './components/LocalsPage/LocalsPage';
 import Header from './components/Navbar';
-import RealEstateOverviewPage from './components/HomeOverviewPage/HomeOverviewPage';
+import HomeOverviewPage from './components/HomeOverviewPage/HomeOverviewPage';
 import { Route, Routes } from "react-router-dom";
 import HomePage from './components/HomePage/HomePage';
 import SearchingMenu from './components/Common/SearchingMenu';
@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/homes/:id" exact element={<RealEstateOverviewPage />} />
+        <Route path="/homes/:id" exact element={<HomeOverviewPage />} />
         <Route path="/contact" exact element={<ContactPage />} />
         <Route path="/homes" exact element={<HomesPage />} />
         <Route path="/locals" exact element={<LocalsPage />} />

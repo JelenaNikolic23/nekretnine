@@ -2,7 +2,7 @@ import jQuery from 'jquery';
 import axios from 'axios';
 
 
-function getHousesAndFlats() {
+function getHomes() {
     const queryParams = jQuery.param({
         type: "kuce/stanovi",
         populate: "*"
@@ -11,6 +11,16 @@ function getHousesAndFlats() {
     return axios.get("http://localhost:1337/api/real-estates?" + queryParams);
 }
 
+function getSingleHome(homeId) {
+    const queryParams = jQuery.param({
+        type: "kuce/stanovi",
+        populate: "pictures,agent.profilePicture,city"
+    });
+
+    return axios.get("http://localhost:1337/api/real-estates/" + homeId + "?" + queryParams);
+}
+
 export {
-    getHousesAndFlats
+    getHomes,
+    getSingleHome
 }

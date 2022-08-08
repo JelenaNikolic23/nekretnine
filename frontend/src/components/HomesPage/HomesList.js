@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function HousesAndFlatsList(props) {
+function HomesList(props) {
 
     return (
         <section className="property-grid grid">
@@ -19,7 +19,7 @@ function HousesAndFlatsList(props) {
                                         <div className="card-header-a">
                                             <h2 className="card-title-a">
                                                 <span >{item.title}
-                                                    <br />{item.location}</span>
+                                                    <br />{item.location}, {item.city}</span>
                                             </h2>
                                         </div>
                                         <div className="card-body-a">
@@ -97,4 +97,4 @@ function HousesAndFlatsList(props) {
 }
 
 
-export default HousesAndFlatsList;
+export default HomesList;
