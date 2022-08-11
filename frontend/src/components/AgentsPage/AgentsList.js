@@ -3,8 +3,8 @@ function AgentsList(props) {
         <section className="agents-grid grid">
             <div className="container">
                 <div className="row">
+                {props.agents.length === 0 && "Nema dostupnih agenata"}
                 {props.agents.map(agent => { 
-                    console.log(agent)
                     return (
                     <div key={agent.id} className="col-md-4">
                         <div className="card-box-d">
@@ -35,26 +35,26 @@ function AgentsList(props) {
                                 <div className="card-footer-d">
                                     <div className="socials-footer d-flex justify-content-center">
                                         <ul className="list-inline">
-                                            <li className="list-inline-item">
-                                                <a href="#" className="link-one">
+                                            {agent.facebookLink && <li className="list-inline-item">
+                                                <a href={agent.facebookLink} className="link-one">
                                                     <i className="bi bi-facebook" aria-hidden="true"></i>
                                                 </a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a href="#" className="link-one">
+                                            </li>}
+                                            {agent.twitterLink && <li className="list-inline-item">
+                                                <a href={agent.twitterLink} className="link-one">
                                                     <i className="bi bi-twitter" aria-hidden="true"></i>
                                                 </a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a href="#" className="link-one">
+                                            </li>}
+                                            {agent.instagramLink && <li className="list-inline-item">
+                                                <a href={agent.instagramLink} className="link-one">
                                                     <i className="bi bi-instagram" aria-hidden="true"></i>
                                                 </a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a href="#" className="link-one">
+                                            </li>}
+                                            {agent.linkedInLink && <li className="list-inline-item">
+                                                <a href={agent.linkedInLink} className="link-one">
                                                     <i className="bi bi-linkedin" aria-hidden="true"></i>
                                                 </a>
-                                            </li>
+                                            </li>}
                                         </ul>
                                     </div>
                                 </div>

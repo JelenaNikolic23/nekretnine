@@ -7,6 +7,7 @@ function HomesList(props) {
             <div className="container">
                 <div className="row">
 
+                    {props.items.length === 0 && "Nema dostupnih stambenih objekata"}
                     {props.items.map(item => {
                         return (
                         <div key={item.id} className="col-md-4">

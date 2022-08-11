@@ -20,7 +20,27 @@ function getSingleHome(homeId) {
     return axios.get("http://localhost:1337/api/real-estates/" + homeId + "?" + queryParams);
 }
 
+function getLocals() {
+    const queryParams = jQuery.param({
+        type: "lokali",
+        populate: "*"
+    });
+
+    return axios.get("http://localhost:1337/api/real-estates?" + queryParams);
+}
+
+function getSingleLocal(homeId) {
+    const queryParams = jQuery.param({
+        type: "lokali",
+        populate: "pictures,agent.profilePicture,city"
+    });
+
+    return axios.get("http://localhost:1337/api/real-estates/" + homeId + "?" + queryParams);
+}
+
 export {
     getHomes,
-    getSingleHome
+    getSingleHome,
+    getLocals,
+    getSingleLocal
 }
