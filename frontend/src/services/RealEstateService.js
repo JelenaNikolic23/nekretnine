@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function getHomes() {
     const queryParams = jQuery.param({
-        type: "kuce/stanovi",
+        "filters[type]": "kuce/stanovi",
         populate: "*"
     });
 
@@ -13,7 +13,7 @@ function getHomes() {
 
 function getSingleHome(homeId) {
     const queryParams = jQuery.param({
-        type: "kuce/stanovi",
+        "filters[type]": "lokal",
         populate: "pictures,agent.profilePicture,city"
     });
 
@@ -22,7 +22,7 @@ function getSingleHome(homeId) {
 
 function getLocals() {
     const queryParams = jQuery.param({
-        type: "lokali",
+        "filters[type]": "lokal",
         populate: "*"
     });
 
@@ -31,7 +31,7 @@ function getLocals() {
 
 function getSingleLocal(homeId) {
     const queryParams = jQuery.param({
-        type: "lokali",
+        "filters[type]": "lokal",
         populate: "pictures,agent.profilePicture,city"
     });
 

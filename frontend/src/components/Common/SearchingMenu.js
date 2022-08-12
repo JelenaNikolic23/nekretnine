@@ -60,29 +60,6 @@ function SearchingMenu() {
                             </div>
                             <div className="col-md-6 mb-2">
                                 <div className="form-group mt-3">
-                                    <label className="pb-2" htmlFor="bedrooms">Spavace sobe</label>
-                                    <select className="form-control form-select form-control-a" id="bedrooms">
-                                        <option></option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-md-6 mb-2">
-                                <div className="form-group mt-3">
-                                    <label className="pb-2" htmlFor="bathrooms">Kupatila</label>
-                                    <select className="form-control form-select form-control-a" id="bathrooms">
-                                        <option></option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-md-6 mb-2">
-                                <div className="form-group mt-3">
                                     <label className="pb-2" htmlFor="price">Minimalna cena</label>
                                     <input min={50000} type="number" className="form-control form-control-a" id="min-price" />
                                 </div>
@@ -103,6 +80,31 @@ function SearchingMenu() {
 
                             <div className="collapse my-2 px-5" id="advancedSearch">
                                 <div className="row">
+                                    
+                                    <div className="col-md-6 mb-2">
+                                        <div className="form-group mt-3">
+                                            <label className="pb-2" htmlFor="bedrooms">Spavace sobe</label>
+                                            <select className="form-control form-select form-control-a" id="bedrooms">
+                                                <option></option>
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="form-group mt-3">
+                                            <label className="pb-2" htmlFor="bathrooms">Kupatila</label>
+                                            <select className="form-control form-select form-control-a" id="bathrooms">
+                                                <option></option>
+                                                <option>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div className="col-6 form-check">
                                         <input type="checkbox" id="chekcboxParkingMesto" className="form-check-input" />
                                         <label className="form-label">Parking mesto</label>

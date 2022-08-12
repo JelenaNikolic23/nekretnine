@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSingleHome } from "../../services/RealEstateService";
+import { getSingleLocal } from "../../services/RealEstateService";
 import { hideLoader } from "../../utils";
 import Loader from "../Common/Loader";
 import PageIntro from "../Common/PageIntro";
-import ContactAgentSection from "./ContactAgentSection";
-import HomeDetails from "./HomeDetails";
-import HomeOverviewCarousel from "./HomeOverviewCarousel";
+import ContactAgentSection from "../HomeOverviewPage/ContactAgentSection";
+import LocalDetails from "./LocalDetails";
+import LocalOverviewCarousel from "./LocalOverviewCarousel";
 
-function HomeOverviewPage() {
+function LocalOverviewPage(props) {
 
     const [pageIntroProps, setPageIntroProps] = useState({
         title: "Naslov objekta",
         subtitle: "Lokacija",
-        pathLabel: "Kuca/Stan"
+        pathLabel: "Lokali"
     });
 
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const [home, setHome] = useState({
+    const [local, setLocal] = useState({
         id: "",
         title: "",
         location: "",
@@ -28,20 +28,20 @@ function HomeOverviewPage() {
         description: "",
         rooms: 0,
         bathrooms: 0,
-        garages: 0,
-        balcons: 0,
         surface: 0,
         price: 0,
-        cableNetwork: false,
-        keepingRoom: false,
-        parkingPlace: false,
-        sharedRoom: false,
+        heating: "",
+        outsideSurface: 0,
+        equipmentIncluded: false,
+        helperWarehouse: false,
+        ventilation: false,
     });
+
     const [imageUrls, setImageUrls] = useState([]);
     const [agent, setAgent] = useState({});
 
     useEffect(() => {
-        getSingleHome(id).then(response => {
+        getSingleLocal(id).then(response => {
             if (response.status !== 200) {
 
             }
@@ -55,41 +55,37 @@ function HomeOverviewPage() {
             setPageIntroProps({
                 title: item.attributes.title,
                 subtitle: item.attributes.location + ", " + item.attributes.city.data.attributes.name,
-                pathLabel: "Kuca/Stan"
+                pathLabel: "Lokali"
             })
 
-            const tempHome = {
+            const tempLocal = {
                 id: item.id,
                 title: item.attributes.title,
                 location: item.attributes.location,
-                city: item.attributes.city.data.attributes.name,
                 type: item.attributes.type,
                 description: item.attributes.description,
-                bedrooms: item.attributes.bedrooms,
+                city: item.attributes.city.data.attributes.name,
+                rooms: item.attributes.rooms,
                 bathrooms: item.attributes.bathrooms,
-                garages: item.attributes.garages,
-                balcons: item.attributes.balcons,
                 surface: item.attributes.surface,
                 price: item.attributes.price,
                 heating: item.attributes.heating,
-                legalized: item.attributes.legalized,
-                floorNumber: item.attributes.floorNumber,
-                cableNetwork: item.attributes.cableNetwork,
-                keepingRoom: item.attributes.keepingRoom,
-                parkingPlace: item.attributes.parkingPlace,
-                sharedRoom: item.attributes.sharedRoom,
+                outsideSurface: item.attributes.outsideSurface,
+                equipmentIncluded: item.attributes.equipmentIncluded,
+                helperWarehouse: item.attributes.helperWarehouse,
+                ventilation: item.attributes.ventilation,
             };
             
             setAgent({
                 ...item.attributes.agent.data.attributes,
                 imageUrl: "http://localhost:1337" + item.attributes.agent.data.attributes.profilePicture.data.attributes.url,
                });
-            setHome(tempHome);
+            setLocal(tempLocal);
             hideLoader();
         })
         .catch(err => {
-            navigate("/not-found")
-        }) ;
+            navigate("/not-found");
+        });
     }, []);
 
     return (
@@ -98,10 +94,10 @@ function HomeOverviewPage() {
 
             <section className="property-single nav-arrow-b">
                 <div className="container">
-                    <HomeOverviewCarousel images={imageUrls} />
+                    <LocalOverviewCarousel images={imageUrls} />
 
                     <div className="row">
-                        <HomeDetails home={home} />
+                        <LocalDetails local={local} />
                         <ContactAgentSection agent={agent} />
                         <Loader />
                     </div>
@@ -111,4 +107,4 @@ function HomeOverviewPage() {
     )
 }
 
-export default HomeOverviewPage;
+export default LocalOverviewPage;

@@ -20,7 +20,7 @@ function HomesList(props) {
                                         <div className="card-header-a">
                                             <h2 className="card-title-a">
                                                 <span >{item.title}
-                                                    <br />{item.location}, {item.city}</span>
+                                                <br />{item.location}, {item.city}</span>
                                             </h2>
                                         </div>
                                         <div className="card-body-a">

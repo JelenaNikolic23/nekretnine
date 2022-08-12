@@ -1,4 +1,4 @@
-function HomeDetails(props) {
+function LocalDetails(props) {
     return (
         <div className="col-sm-12">
             <div className="row justify-content-between">
@@ -6,7 +6,7 @@ function HomeDetails(props) {
                     <div className="property-price d-flex justify-content-center foo">
                         <div className="card-header-c d-flex">
                             <div className="card-box-ico">
-                                <span className="title-c">{props.home.price}</span>
+                                <span className="title-c">{props.local.price}</span>
                                 <span className="bi bi-currency-euro"></span>
                             </div>
                         </div>
@@ -15,7 +15,7 @@ function HomeDetails(props) {
                         <div className="row">
                             <div className="col-sm-12">
                                 <div className="title-box-d section-t4 text-start">
-                                    <h3 className="title-d">{props.home.title}</h3>
+                                    <h3 className="title-d">{props.local.title}</h3>
                                 </div>
                             </div>
                         </div>
@@ -23,51 +23,39 @@ function HomeDetails(props) {
                             <ul className="list">
                                 <li className="d-flex justify-content-between">
                                     <strong>ID nekretnine:</strong>
-                                    <span>{props.home.id}</span>
+                                    <span>{props.local.id}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Lokacija:</strong>
-                                    <span>{props.home.location}, {props.home.city}</span>
+                                    <span>{props.local.location}, {props.local.city}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Tip nekretnine:</strong>
-                                    <span>{props.home.type}</span>
-                                </li>
-                                <li className="d-flex justify-content-between">
-                                    <strong>Uknjizen:</strong>
-                                    {props.home.legalized && <span>Da</span>}
-                                    {!props.home.legalized && <span>Ne</span>}
+                                    <span>{props.local.type}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Povrsina:</strong>
-                                    <span>{props.home.surface}m
+                                    <span>{props.local.surface}m
                                         <sup>2</sup>
                                     </span>
                                 </li>
                                 <li className="d-flex justify-content-between">
-                                    <strong>Sprat:</strong>
-                                    <span>{props.home.floorNumber}</span>
-                                </li>
-                                <li className="d-flex justify-content-between">
                                     <strong>Grejanje:</strong>
-                                    <span>{props.home.heating}</span>
+                                    <span>{props.local.heating}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
-                                    <strong>Sobe:</strong>
-                                    <span>{props.home.bedrooms}</span>
+                                    <strong>Prostorije:</strong>
+                                    <span>{props.local.rooms}</span>
                                 </li>
                                 <li className="d-flex justify-content-between">
                                     <strong>Kupatila:</strong>
-                                    <span>{props.home.bathrooms}</span>
+                                    <span>{props.local.bathrooms}</span>
                                 </li>
+                                {props.local.outsideSurface && 
                                 <li className="d-flex justify-content-between">
-                                    <strong>Garaze:</strong>
-                                    <span>{props.home.garages}</span>
-                                </li>
-                                <li className="d-flex justify-content-between">
-                                    <strong>Terase:</strong>
-                                    <span>{props.home.balcons}</span>
-                                </li>
+                                    <strong>Basta:</strong>
+                                    <span>{props.local.outsideSurface}</span>
+                                </li>}
                             </ul>
                         </div>
                     </div>
@@ -82,7 +70,7 @@ function HomeDetails(props) {
                     </div>
                     <div className="property-description">
                         <p className="description color-text-a text-start">
-                            {props.home.description}
+                            {props.local.description}
                         </p>
                     </div>
                     <div className="row section-t3">
@@ -94,10 +82,9 @@ function HomeDetails(props) {
                     </div>
                     <div className="amenities-list color-text-a text-start">
                         <ul className="list-a no-margin">
-                            {props.home.keepingRoom && <li>Ostava</li>}
-                            {props.home.cableNetwork && <li>Prikljucak za kablovsku</li>}
-                            {props.home.parkingPlace && <li>Parking mesto</li>}
-                            {props.home.sharedRoom && <li>Zajednicka prostorija</li>}
+                            {props.local.equipmentIncluded && <li>Ukljucena oprema</li>}
+                            {props.local.helperWarehouse && <li>Pomocni prostor</li>}
+                            {props.local.ventilation && <li>Ventilacija</li>}
                         </ul>
                     </div>
                 </div>
@@ -106,4 +93,4 @@ function HomeDetails(props) {
     )
 }
 
-export default HomeDetails;
+export default LocalDetails;

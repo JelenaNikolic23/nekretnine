@@ -33,7 +33,7 @@ function HomesPage() {
                     title: item.attributes.title,
                     location: item.attributes.location,
                     city: item.attributes.city.data.attributes.name,
-                    bedrooms: item.attributes.bedrooms,
+                    rooms: item.attributes.rooms,
                     bathrooms: item.attributes.bathrooms,
                     garages: item.attributes.garages,
                     surface: item.attributes.surface,

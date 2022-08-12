@@ -1,290 +1,64 @@
-function LocalsList() {
+import { Link } from "react-router-dom";
+
+function LocalsList(props) {
     return (
         <section className="property-grid grid">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
-                        <div className="card-box-a card-shadow">
-                            <div className="img-box-a">
-                                <img src="https://bootstrapmade.com/demo/templates/EstateAgency/assets/img/post-7.jpg" alt="" className="img-a img-fluid" />
-                            </div>
-                            <div className="card-overlay">
-                                <div className="card-overlay-a-content">
-                                    <div className="card-header-a">
-                                        <h2 className="card-title-a">
-                                            <a href="#">Partizanska 22
-                                                <br /> Novi Sad</a>
-                                        </h2>
+
+                    {props.items.length === 0 && "Nema dostupnih lokala"}
+                    {props.items.map(item => {
+                        return (
+                            <div className="col-md-4" key={item.id}>
+                                <div className="card-box-a card-shadow">
+                                    <div className="img-box-a">
+                                        <img src={item.imageUrl} alt="" className="img-a img-fluid" />
                                     </div>
-                                    <div className="card-body-a">
-                                        <div className="price-box d-flex">
-                                            <span className="price-a">12.000 €</span>
+                                    <div className="card-overlay">
+                                        <div className="card-overlay-a-content">
+                                            <div className="card-header-a">
+                                                <h2 className="card-title-a">
+                                                    <span >{item.title}
+                                                    <br />{item.location}, {item.city}</span>
+                                                </h2>
+                                            </div>
+                                            <div className="card-body-a">
+                                                <div className="price-box d-flex">
+                                                    <span className="price-a">{item.price} €</span>
+                                                </div>
+                                                <Link to={item.overviewLink} className="link-a">Vise detalja
+                                                    <span className="bi bi-chevron-right"></span>
+                                                </Link>
+                                            </div>
+                                            <div className="card-footer-a">
+                                                <ul className="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 className="card-info-title">Povrsina</h4>
+                                                        <span>{item.surface} m
+                                                            <sup>2</sup>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 className="card-info-title">Prostorije</h4>
+                                                        <span>{item.rooms}</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 className="card-info-title">Kupatila</h4>
+                                                        <span>{item.bathrooms}</span>
+                                                    </li>
+                                                    {item.outsideSurface && 
+                                                    <li>
+                                                        <h4 className="card-info-title">Basta</h4>
+                                                        <span>{item.outsideSurface} </span>
+                                                    </li>
+                                                    }
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <a href="property-single.html" className="link-a">Vise detalja
-                                            <span className="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div className="card-footer-a">
-                                        <ul className="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 className="card-info-title">Povrsina</h4>
-                                                <span>340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Sobe</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Kupatila</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Garaze</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card-box-a card-shadow">
-                            <div className="img-box-a">
-                                <img src="https://bootstrapmade.com/demo/templates/EstateAgency/assets/img/post-7.jpg" alt="" className="img-a img-fluid" />
-                            </div>
-                            <div className="card-overlay">
-                                <div className="card-overlay-a-content">
-                                    <div className="card-header-a">
-                                        <h2 className="card-title-a">
-                                            <a href="#">Partizanska 22
-                                                <br /> Novi</a>
-                                        </h2>
-                                    </div>
-                                    <div className="card-body-a">
-                                        <div className="price-box d-flex">
-                                            <span className="price-a">12.000 €</span>
-                                        </div>
-                                        <a href="property-single.html" className="link-a">Vise detalja
-                                            <span className="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div className="card-footer-a">
-                                        <ul className="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 className="card-info-title">Povrsina</h4>
-                                                <span>340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Sobe</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Kupatila</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Garaze</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card-box-a card-shadow">
-                            <div className="img-box-a">
-                                <img src="https://bootstrapmade.com/demo/templates/EstateAgency/assets/img/post-7.jpg" alt="" className="img-a img-fluid" />
-                            </div>
-                            <div className="card-overlay">
-                                <div className="card-overlay-a-content">
-                                    <div className="card-header-a">
-                                        <h2 className="card-title-a">
-                                            <a href="#">Partizanska 22
-                                                <br /> Novi</a>
-                                        </h2>
-                                    </div>
-                                    <div className="card-body-a">
-                                        <div className="price-box d-flex">
-                                            <span className="price-a">12.000 €</span>
-                                        </div>
-                                        <a href="property-single.html" className="link-a">Vise detalja
-                                            <span className="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div className="card-footer-a">
-                                        <ul className="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 className="card-info-title">Povrsina</h4>
-                                                <span>340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Sobe</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Kupatila</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Garaze</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card-box-a card-shadow">
-                            <div className="img-box-a">
-                                <img src="https://bootstrapmade.com/demo/templates/EstateAgency/assets/img/post-7.jpg" alt="" className="img-a img-fluid" />
-                            </div>
-                            <div className="card-overlay">
-                                <div className="card-overlay-a-content">
-                                    <div className="card-header-a">
-                                        <h2 className="card-title-a">
-                                            <a href="#">Partizanska 22
-                                                <br /> Novi</a>
-                                        </h2>
-                                    </div>
-                                    <div className="card-body-a">
-                                        <div className="price-box d-flex">
-                                            <span className="price-a">12.000 €</span>
-                                        </div>
-                                        <a href="property-single.html" className="link-a">Vise detalja
-                                            <span className="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div className="card-footer-a">
-                                        <ul className="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 className="card-info-title">Povrsina</h4>
-                                                <span>340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Sobe</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Kupatila</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Garaze</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card-box-a card-shadow">
-                            <div className="img-box-a">
-                                <img src="https://bootstrapmade.com/demo/templates/EstateAgency/assets/img/post-7.jpg" alt="" className="img-a img-fluid" />
-                            </div>
-                            <div className="card-overlay">
-                                <div className="card-overlay-a-content">
-                                    <div className="card-header-a">
-                                        <h2 className="card-title-a">
-                                            <a href="#">Partizanska 22
-                                                <br /> Novi</a>
-                                        </h2>
-                                    </div>
-                                    <div className="card-body-a">
-                                        <div className="price-box d-flex">
-                                            <span className="price-a">12.000 €</span>
-                                        </div>
-                                        <a href="property-single.html" className="link-a">Vise detalja
-                                            <span className="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div className="card-footer-a">
-                                        <ul className="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 className="card-info-title">Povrsina</h4>
-                                                <span>340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Sobe</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Kupatila</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Garaze</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="card-box-a card-shadow">
-                            <div className="img-box-a">
-                                <img src="https://bootstrapmade.com/demo/templates/EstateAgency/assets/img/post-7.jpg" alt="" className="img-a img-fluid" />
-                            </div>
-                            <div className="card-overlay">
-                                <div className="card-overlay-a-content">
-                                    <div className="card-header-a">
-                                        <h2 className="card-title-a">
-                                            <a href="#">Partizanska 22
-                                                <br /> Novi</a>
-                                        </h2>
-                                    </div>
-                                    <div className="card-body-a">
-                                        <div className="price-box d-flex">
-                                            <span className="price-a">12.000 €</span>
-                                        </div>
-                                        <a href="property-single.html" className="link-a">Vise detalja
-                                            <span className="bi bi-chevron-right"></span>
-                                        </a>
-                                    </div>
-                                    <div className="card-footer-a">
-                                        <ul className="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 className="card-info-title">Povrsina</h4>
-                                                <span>340m
-                                                    <sup>2</sup>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Sobe</h4>
-                                                <span>2</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Kupatila</h4>
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                <h4 className="card-info-title">Garaze</h4>
-                                                <span>1</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        )})}
                 </div>
                 <div className="row">
                     <div className="col-sm-12">

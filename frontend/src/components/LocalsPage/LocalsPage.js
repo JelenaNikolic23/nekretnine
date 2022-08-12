@@ -33,13 +33,17 @@ function LocalsPage() {
                     title: item.attributes.title,
                     location: item.attributes.location,
                     city: item.attributes.city.data.attributes.name,
-                    bedrooms: item.attributes.bedrooms,
+                    rooms: item.attributes.rooms,
                     bathrooms: item.attributes.bathrooms,
-                    garages: item.attributes.garages,
                     surface: item.attributes.surface,
                     price: item.attributes.price,
+                    heating: item.attributes.heating,
+                    outsideSurface: item.attributes.outsideSurface,
+                    equipmentIncluded: item.attributes.equipmentIncluded,
+                    helperWarehouse: item.attributes.helperWarehouse,
+                    ventilation: item.attributes.ventilation,
                     imageUrl: "http://localhost:1337" + imageUrl,
-                    overviewLink: "/homes/" + item.id,
+                    overviewLink: "/locals/" + item.id,
                 }
             });
 
