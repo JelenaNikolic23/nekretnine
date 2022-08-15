@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import {UserContext} from "../context/UserContext";
 import { select, onscroll } from "../utils"
 
 function Header() {
 
-    useEffect(() => {
+    const {user, setUser} = useContext(UserContext);
 
+    useEffect(() => {
         let selectHNavbar = select('.navbar-default')
         if (selectHNavbar) {
             onscroll(document, () => {
@@ -19,6 +21,10 @@ function Header() {
             })
         }
     }, []);
+
+    function handleLogout() {
+        setUser(null);
+    }
 
     return (
         <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -53,6 +59,12 @@ function Header() {
                             <NavLink className="nav-link " to={"/contact"} activeclassname={"active"}>Kontakt</NavLink>
                         </li>
 
+                        {user && 
+                        <li className="nav-item">
+                            <Link className="btn btn-warning" to={"/real-estates/new"}>Novi oglas</Link>
+                        </li>
+                        }
+
                     </ul>
                 </div>
 
@@ -62,9 +74,18 @@ function Header() {
                         <i className="bi bi-search"></i>
                     </button>
 
+
+                    {!user && 
                     <button type="button" className="btn" style={{borderColor: "#2eca6a"}}>
                         <Link className="text-black fw-bold" style={{textDecoration: 'none'}} to={"/login"}>Login</Link>
                     </button>
+                    }   
+
+                    {user && 
+                    <button type="button" className="btn" style={{borderColor: "red"}}>
+                        <span className="text-black fw-bold" style={{textDecoration: 'none'}} onClick={handleLogout}>Logout</span>
+                    </button>
+                    }
                 </div>
 
             </div>

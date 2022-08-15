@@ -44,7 +44,7 @@
     "surface": {
       "type": "decimal"
     },
-    "bedrooms": {
+    "rooms": {
       "type": "integer"
     },
     "bathrooms": {
@@ -69,14 +69,41 @@
       "type": "boolean"
     },
     "pictures": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "floorNumber": {
+      "type": "integer"
+    },
+    "legalized": {
+      "type": "boolean"
+    },
+    "heating": {
+      "type": "enumeration",
+      "enum": [
+        "CG",
+        "Gas",
+        "Struja"
+      ]
+    },
+    "ventilation": {
+      "type": "boolean"
+    },
+    "equipmentIncluded": {
+      "type": "boolean"
+    },
+    "helperWarehouse": {
+      "type": "boolean"
+    },
+    "outsideSurface": {
+      "type": "integer"
     }
   }
 }
