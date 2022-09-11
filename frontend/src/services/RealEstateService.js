@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function getHomes() {
     const queryParams = jQuery.param({
-        "filters[type]": "kuce/stanovi",
+        "filters[type]": "stan/kuca",
         populate: "*"
     });
 
