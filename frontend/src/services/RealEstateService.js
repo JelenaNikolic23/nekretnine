@@ -2,9 +2,11 @@ import jQuery from 'jquery';
 import axios from 'axios';
 
 
-function getHomes() {
+function getHomes(page=1) {
     const queryParams = jQuery.param({
         "filters[type]": "stan/kuca",
+        "pagination[page]": page,
+        "pagination[pageSize]": 9,
         populate: "*"
     });
 
@@ -20,9 +22,11 @@ function getSingleHome(homeId) {
     return axios.get("http://localhost:1337/api/real-estates/" + homeId + "?" + queryParams);
 }
 
-function getLocals() {
+function getLocals(page=1) {
     const queryParams = jQuery.param({
         "filters[type]": "lokal",
+        "pagination[page]": page,
+        "pagination[pageSize]": 9,
         populate: "*"
     });
 
