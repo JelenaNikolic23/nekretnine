@@ -1,3 +1,5 @@
+import MultipleImagesUploader from "./Common/MultipleImagesUploader";
+
 function NotFoundPage() {
     return (
         <div className="vh-100" style={{paddingTop: "20rem"}}>

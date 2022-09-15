@@ -14,6 +14,7 @@ import NotFoundPage from './components/NotFoundPage';
 import LoginPage from './components/LoginPage';
 import { useEffect } from 'react';
 import LocalOverviewPage from './components/LocalOverviewPage/LocalOverviewPage';
+import CreateRealEstate from './components/CreateRealEstate/CreateRealEstate';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
+        <Route path="/real-estates/new" exact element={<CreateRealEstate />} />
         <Route path="/homes/:id" exact element={<HomeOverviewPage />} />
         <Route path="/contact" exact element={<ContactPage />} />
         <Route path="/homes" exact element={<HomesPage />} />
