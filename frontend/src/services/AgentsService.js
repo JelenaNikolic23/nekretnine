@@ -2,9 +2,11 @@ import jQuery from 'jquery';
 import axios from 'axios';
 
 
-function getAgents() {
+function getAgents(page=1) {
     const queryParams = jQuery.param({
-        populate: "*"
+        populate: "*",
+        "pagination[page]": page,
+        "pagination[pageSize]": 9,
     });
 
     return axios.get("http://localhost:1337/api/agents?" + queryParams);

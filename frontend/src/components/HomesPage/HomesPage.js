@@ -60,11 +60,11 @@ function HomesPage() {
 
     setItems(flatsAndHouses);
 
-    const responsePagination = response.data.meta.pagination
+    const responsePagination = response.data.meta.pagination;
     setPagination({
       currentPage: responsePagination.page,
       total: responsePagination.pageCount
-    })
+    });
     hideLoader();
   }
 
