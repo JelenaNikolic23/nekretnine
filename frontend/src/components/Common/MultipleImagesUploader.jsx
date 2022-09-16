@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 export default function MultipleImagesUploader(props) {
@@ -19,6 +20,10 @@ export default function MultipleImagesUploader(props) {
     function removeImage(index) {
         setImagesArray(prev => prev.filter((image, idx) => index !== idx))
     }
+
+    useEffect(() => {
+        props.imageAdded(imagesArray);
+    }, [imagesArray]);
     
     return (
         <div className="upload__box">

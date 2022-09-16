@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import 'animate.css/animate.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

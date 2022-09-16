@@ -1,20 +1,27 @@
+import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { saveNewRealEstate, savePhotosForRealEstate } from "../../services/RealEstateService";
 import MultipleImagesUploader from "../Common/MultipleImagesUploader";
 import PageIntro from "../Common/PageIntro";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function CreateRealEstate(props) {
 
-    const [pageIntroProps, setPageIntroProps] = useState({
+    const navigation = useNavigate();
+
+    const pageIntroProps = {
         title: "Nova nekretnina",
         subtitle: "Nekretnine",
         pathLabel: "Nova nekretnina"
-    });
+    };
 
     const [newRealEstate, setNewRealEstate] = useState({
         "title": "",
         "description": "",
-        "type": "Stanovi/kuce",
+        "type": "stan/kuca",
         "location": "",
+        "city": 1,
         "price": 0,
         "surface": 0,
         "bathrooms": 0,
@@ -33,9 +40,13 @@ export default function CreateRealEstate(props) {
         "ventilation": false,
         "equipmentIncluded": false,
         "helperWarehouse": false,
-        "outsideSurface": false,
-        "rooms": 0
+        "outsideSurface": 0,
+        "rooms": 0,
+        "agent": 1,
+        "pictures": [],
     });
+
+    const [imagesArray, setImagesArray] = useState([]);
 
     const [homesSelelected, setHomesSelected] = useState(true);
 
@@ -72,8 +83,71 @@ export default function CreateRealEstate(props) {
         handleTextProperyChanged(event);
     }
 
-    console.log(newRealEstate)
+    const save = () => {
+        if (!imagesArray.length) {
+            toast.error("Morate da izaberete bar jednu sliku", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                className: "Toastify__toast-theme--colored"
+                });
+            return;
+        }
 
+        saveNewRealEstate(newRealEstate)
+            .then(response => {
+                console.log(response);
+                const newRealEstateId = response.data.data.id;
+                savePhotosForRealEstate(newRealEstateId, imagesArray)
+                    .then(response => {
+                        toast.success('Uspesno sacuvano!', {
+                            position: "bottom-right",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: false,
+                            draggable: true,
+                            className: "Toastify__toast-theme--colored"
+                            });
+
+                            setTimeout(() => {
+                                if (newRealEstate.type === 'stan/kuca') {
+                                    navigation("/homes");
+                                } else {
+                                    navigation("/locals");
+                                }
+                            }, 1500);
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        toast.error(err.response.data.error.message, {
+                            position: "bottom-right",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: false,
+                            draggable: true,
+                            className: "Toastify__toast-theme--colored"
+                            });
+                    })
+            })
+            .catch(err => {
+                toast.error(err.response.data.error.message, {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    className: "Toastify__toast-theme--colored"
+                    });
+                console.log(err);
+            })
+    }
+    
     return (
         <>
             <PageIntro data={pageIntroProps} />
@@ -89,15 +163,15 @@ export default function CreateRealEstate(props) {
                 <div className="mb-3">
                     <label htmlFor="type" className="fw-bold">Tip</label>
                     <select className="form-select" id="type" name="type" onChange={handleTypeChanged}>
-                        <option value={"Stanovi/Kuce"}>Stanovi/kuce</option>
-                        <option value={"Lokali"}>Lokali</option>
+                        <option value={"stan/kuca"}>Stanovi/Kuce</option>
+                        <option value={"lokal"}>Lokali</option>
                     </select>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="city" className="fw-bold">Grad</label>
-                    <select className="form-select" id="city" name="city" onChange={handleTextProperyChanged}>
-                        <option>Test</option>
-                        <option>Test</option>
+                    <select className="form-select" id="city" name="city" onChange={handleIntNumberProperyChanged}>
+                        <option value={"1"}>Beograd</option>
+                        <option value={"2"}>Novi Sad</option>
                     </select>
                 </div>
                 <div className="mb-3">
@@ -216,13 +290,16 @@ export default function CreateRealEstate(props) {
 
                 <div className="my-5">
                     <label className="fw-bold">Izaberite slike</label>
-                    <MultipleImagesUploader />
+                    <MultipleImagesUploader imageAdded={(images) => setImagesArray(images)} />
                 </div>
 
-
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <div className="m-5">
+                    <button type="button" className="btn btn-success" onClick={save}>Sacuvaj</button>
+                </div>
+                
             </form>
             
+            <ToastContainer />
         </>
     )
 }
