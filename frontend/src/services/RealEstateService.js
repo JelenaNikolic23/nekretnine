@@ -42,15 +42,23 @@ function getSingleLocal(homeId) {
     return axios.get("http://localhost:1337/api/real-estates/" + homeId + "?" + queryParams);
 }
 
-function saveNewRealEstate(requestBody) {
-    return axios.post("http://localhost:1337/api/real-estates", {data: {
+function saveNewRealEstate(requestBody, user) {
+    return axios.post("http://localhost:1337/api/real-estates", {
+        data: {
         ...requestBody,
         "createdAt": (new Date()).toISOString(),
         "publishedAt": (new Date()).toISOString(),
-    }});
+        "agent": user.user.id
+        }
+    },
+    {
+        headers: {
+            Authorization: `Bearer ${user.jwt}`
+        }
+    });
 }
 
-function savePhotosForRealEstate(realEstateId, photosArray) {
+function savePhotosForRealEstate(realEstateId, photosArray, user) {
     const formData = new FormData();
     formData.append("ref", "api::real-estate.real-estate");
     formData.append("refId", realEstateId);
@@ -59,7 +67,12 @@ function savePhotosForRealEstate(realEstateId, photosArray) {
         formData.append("files", photo)
     });
 
-    return axios.post("http://localhost:1337/api/upload", formData);
+    return axios.post("http://localhost:1337/api/upload", formData,
+    {
+        headers: {
+            Authorization: `Bearer ${user.jwt}`
+        }
+    });
 }
 
 export {

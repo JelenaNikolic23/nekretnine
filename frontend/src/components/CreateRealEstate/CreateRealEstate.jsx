@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveNewRealEstate, savePhotosForRealEstate } from "../../services/RealEstateService";
 import MultipleImagesUploader from "../Common/MultipleImagesUploader";
 import PageIntro from "../Common/PageIntro";
 import { ToastContainer, toast } from 'react-toastify';
+import { UserContext } from "../../context/UserContext";
 
 export default function CreateRealEstate(props) {
 
@@ -15,6 +16,8 @@ export default function CreateRealEstate(props) {
         subtitle: "Nekretnine",
         pathLabel: "Nova nekretnina"
     };
+
+    const {user, setUser} = useContext(UserContext);
 
     const [newRealEstate, setNewRealEstate] = useState({
         "title": "",
@@ -47,8 +50,14 @@ export default function CreateRealEstate(props) {
     });
 
     const [imagesArray, setImagesArray] = useState([]);
-
     const [homesSelelected, setHomesSelected] = useState(true);
+    const [savingInProgress, setSavingInProgress] = useState(false);
+
+    useEffect(() => {
+        if (!user) {
+            navigation("/login");
+        }
+    }, []);
 
     const handleTextProperyChanged = (event) => {
         setNewRealEstate(prev => ({
@@ -97,11 +106,11 @@ export default function CreateRealEstate(props) {
             return;
         }
 
-        saveNewRealEstate(newRealEstate)
+        setSavingInProgress(true);
+        saveNewRealEstate(newRealEstate, user)
             .then(response => {
-                console.log(response);
                 const newRealEstateId = response.data.data.id;
-                savePhotosForRealEstate(newRealEstateId, imagesArray)
+                savePhotosForRealEstate(newRealEstateId, imagesArray, user)
                     .then(response => {
                         toast.success('Uspesno sacuvano!', {
                             position: "bottom-right",
@@ -133,6 +142,9 @@ export default function CreateRealEstate(props) {
                             className: "Toastify__toast-theme--colored"
                             });
                     })
+                    .finally(() => {
+                        setSavingInProgress(false);
+                    })
             })
             .catch(err => {
                 toast.error(err.response.data.error.message, {
@@ -145,6 +157,9 @@ export default function CreateRealEstate(props) {
                     className: "Toastify__toast-theme--colored"
                     });
                 console.log(err);
+            })
+            .finally(() => {
+                setSavingInProgress(false);
             })
     }
     
@@ -293,9 +308,13 @@ export default function CreateRealEstate(props) {
                     <MultipleImagesUploader imageAdded={(images) => setImagesArray(images)} />
                 </div>
 
-                <div className="m-5">
+                <div className="my-5">
                     <button type="button" className="btn btn-success" onClick={save}>Sacuvaj</button>
                 </div>
+                
+                {savingInProgress &&
+                    <div className="spinner-border text-success mb-3" role="status"></div>
+                }
                 
             </form>
             
