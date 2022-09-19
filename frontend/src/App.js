@@ -15,6 +15,7 @@ import LoginPage from './components/LoginPage';
 import { useEffect } from 'react';
 import LocalOverviewPage from './components/LocalOverviewPage/LocalOverviewPage';
 import CreateRealEstate from './components/CreateRealEstate/CreateRealEstate';
+import SearchContextProvider from './context/SearchContext';
 
 function App() {
 
@@ -24,20 +25,23 @@ function App() {
 
   return (
     <div className="App">
+
       <Header />
-      <Routes>
-        <Route path="/real-estates/new" exact element={<CreateRealEstate />} />
-        <Route path="/homes/:id" exact element={<HomeOverviewPage />} />
-        <Route path="/contact" exact element={<ContactPage />} />
-        <Route path="/homes" exact element={<HomesPage />} />
-        <Route path="/locals/:id" exact element={<LocalOverviewPage />} />
-        <Route path="/locals" exact element={<LocalsPage />} />
-        <Route path="/agents" exact element={<AgentsPage />} />
-        <Route path="/login" exact element={<LoginPage />} />
-        <Route path="/" index element={<HomePage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      <SearchingMenu />
+      <SearchContextProvider>
+        <SearchingMenu />
+        <Routes>
+          <Route path="/real-estates/new" exact element={<CreateRealEstate />} />
+          <Route path="/homes/:id" exact element={<HomeOverviewPage />} />
+          <Route path="/contact" exact element={<ContactPage />} />
+          <Route path="/homes" exact element={<HomesPage />} />
+          <Route path="/locals/:id" exact element={<LocalOverviewPage />} />
+          <Route path="/locals" exact element={<LocalsPage />} />
+          <Route path="/agents" exact element={<AgentsPage />} />
+          <Route path="/login" exact element={<LoginPage />} />
+          <Route path="/" index element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </SearchContextProvider>
       <Footer />
       <ScrollToTopButton />
     </div>

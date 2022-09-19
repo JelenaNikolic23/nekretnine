@@ -65,7 +65,7 @@ function HomeOverviewPage() {
                 city: item.attributes.city.data.attributes.name,
                 type: item.attributes.type,
                 description: item.attributes.description,
-                bedrooms: item.attributes.bedrooms,
+                bedrooms: item.attributes.rooms,
                 bathrooms: item.attributes.bathrooms,
                 garages: item.attributes.garages,
                 balcons: item.attributes.balcons,

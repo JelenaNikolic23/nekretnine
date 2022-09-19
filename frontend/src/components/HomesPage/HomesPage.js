@@ -1,10 +1,11 @@
 import PageIntro from "../Common/PageIntro";
 import HomesList from "./HomesList";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getHomes } from "../../services/RealEstateService";
 import Loader from "../Common/Loader";
 import { hideLoader, showLoader } from "../../utils";
 import Pagination from "../Common/Pagination";
+import { SearchContext } from "../../context/SearchContext";
 
 function HomesPage() {
   const pageIntroProps = {
@@ -12,6 +13,8 @@ function HomesPage() {
     subtitle: "Stambeni objekti",
     pathLabel: "Kuce i stanovi",
   };
+
+  const { searchOptions, setSearchOptions } = useContext(SearchContext);
 
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({
@@ -21,7 +24,7 @@ function HomesPage() {
 
   function changePage(pageNumber) {
     showLoader();
-    getHomes(pageNumber).then(response => {
+    getHomes(pageNumber, searchOptions).then(response => {
       handleRetrievedHomes(response);
     });
   }
@@ -31,6 +34,13 @@ function HomesPage() {
       handleRetrievedHomes(response);
     });
   }, []);
+
+  useEffect(() => {
+    showLoader();
+    getHomes(1, searchOptions).then(response => {
+      handleRetrievedHomes(response);
+    })
+  }, [searchOptions]);
 
   function handleRetrievedHomes(response) {
     if (response.status !== 200) {

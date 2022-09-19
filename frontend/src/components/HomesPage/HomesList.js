@@ -41,7 +41,7 @@ function HomesList(props) {
                                                 </li>
                                                 <li>
                                                     <h4 className="card-info-title">Sobe</h4>
-                                                    <span>{item.bedrooms}</span>
+                                                    <span>{item.rooms}</span>
                                                 </li>
                                                 <li>
                                                     <h4 className="card-info-title">Kupatila</h4>

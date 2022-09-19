@@ -2,9 +2,10 @@ import jQuery from 'jquery';
 import axios from 'axios';
 
 
-function getHomes(page=1) {
+function getHomes(page=1, searchOptions) {
     const queryParams = jQuery.param({
         "filters[type]": "stan/kuca",
+        "filters[title][$contains]": searchOptions?.name,
         "pagination[page]": page,
         "pagination[pageSize]": 9,
         populate: "*"

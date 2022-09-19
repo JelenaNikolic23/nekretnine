@@ -1,34 +1,34 @@
-import { useEffect } from "react";
-import { on, select } from "../../utils";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
+import { select } from "../../utils";
 
 function SearchingMenu() {
 
-    useEffect(() => {
-        
+    const { searchOptions, setSearchOptions } = useContext(SearchContext);
+
+    function closeSearchMenu() {
         let body = select('body');
-        on('click', '.navbar-toggle-box', function (e) {
-            e.preventDefault()
-            body.classList.add('box-collapse-open')
-            body.classList.remove('box-collapse-closed')
-        })
+        body.classList.remove('box-collapse-open')
+        body.classList.add('box-collapse-closed')
+    }
 
-        on('click', '.close-box-collapse', function (e) {
-            e.preventDefault()
-            body.classList.remove('box-collapse-open')
-            body.classList.add('box-collapse-closed')
-        })
-    }, []);
-
+    function search() {
+        setSearchOptions(prev => ({
+            ...prev,
+            name: 'tro'
+        }))
+    }
 
     return (
         <>
+
             <div className="click-closed"></div>
 
             <div className="box-collapse text-start">
                 <div className="title-box-d">
                     <h3 className="title-d">Pretraga nekretnina</h3>
                 </div>
-                <span className="close-box-collapse right-boxed bi bi-x"></span>
+                <span className="close-box-collapse right-boxed bi bi-x" onClick={closeSearchMenu}></span>
                 <div className="box-collapse-wrap form">
                     <form className="form-a">
                         <div className="row">
@@ -80,7 +80,7 @@ function SearchingMenu() {
 
                             <div className="collapse my-2 px-5" id="advancedSearch">
                                 <div className="row">
-                                    
+
                                     <div className="col-md-6 mb-2">
                                         <div className="form-group mt-3">
                                             <label className="pb-2" htmlFor="bedrooms">Spavace sobe</label>
@@ -127,13 +127,13 @@ function SearchingMenu() {
                                         <label className="form-label">Zajednicka prostorija</label>
                                     </div>
                                 </div>
-                                
-                                
+
+
 
                             </div>
 
                             <div className="col-md-12 mt-3">
-                                <button type="submit" className="btn btn-b">Pretraga</button>
+                                <button type="button" className="btn btn-b" onClick={search}>Pretraga</button>
                             </div>
                         </div>
                     </form>

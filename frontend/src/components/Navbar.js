@@ -26,6 +26,12 @@ function Header() {
         setUser(null);
     }
 
+    function toggleSeachMenu() {
+        let body = select('body');
+        body.classList.add('box-collapse-open')
+        body.classList.remove('box-collapse-closed')
+    }
+
     return (
         <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
             <div className="container">
@@ -70,7 +76,7 @@ function Header() {
 
                 
                 <div className="d-flex" style={{columnGap: "1rem"}}>
-                    <button type="button" className="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+                    <button type="button" className="btn btn-b-n  navbar-toggle-box navbar-toggle-box-collapse"  onClick={toggleSeachMenu}>
                         <i className="bi bi-search"></i>
                     </button>
 
