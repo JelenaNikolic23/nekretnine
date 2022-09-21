@@ -1,10 +1,40 @@
-import { useContext } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import { select } from "../../utils";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-function SearchingMenu() {
+export default function SearchingMenu() {
 
     const { searchOptions, setSearchOptions } = useContext(SearchContext);
+    const [typeOfRealEstate, setTypeOfRealEstate] = useState("stan/kuca");
+    const [cities, setCities] = useState([]);
+
+    const navigate = useNavigate();
+
+    const nazivRef = useRef(null);
+    const tipRef = useRef(null);
+    const gradRef = useRef(null);
+    const minCenaRef = useRef(null);
+    const maxCenaRef = useRef(null);
+    const minKvadraturaRef = useRef(null);
+    const maxKvadraturaRef = useRef(null);
+    const sobeRef = useRef(null);
+    const kupatilaRef = useRef(null);
+    const parkingMestoRef = useRef(null);
+    const ostavaRef= useRef(null);
+    const zajednickaProstorijaRef= useRef(null);
+    const ventilacijaRef= useRef(null);
+    const pomocnoSkladisteRef= useRef(null);
+    const opremaRef= useRef(null);
+
+    useEffect(() => {
+        axios.get("http://localhost:1337/api/cities")
+                .then(response => {
+                    setCities(response.data.data);
+                });
+    }, []);
+
 
     function closeSearchMenu() {
         let body = select('body');
@@ -13,9 +43,26 @@ function SearchingMenu() {
     }
 
     function search() {
+        if (tipRef.current.value === 'stan/kuca') {
+            navigate("/homes");
+        } else {
+            navigate("/locals");
+        }
+
         setSearchOptions(prev => ({
             ...prev,
-            name: 'tro'
+            naziv: nazivRef.current.value ? nazivRef.current.value : null,
+            grad: gradRef.current.value ? gradRef.current.value : null,
+            tip: tipRef.current.value ? tipRef.current.value : null,
+            minCena: minCenaRef.current.value ? minCenaRef.current.value : null,
+            maxCena: maxCenaRef.current.value ? maxCenaRef.current.value : null,
+            minKvadratura: minKvadraturaRef.current.value ? minKvadraturaRef.current.value : null,
+            maxKvadratura: maxKvadraturaRef.current.value ? maxKvadraturaRef.current.value : null,
+            sobe: sobeRef.current.value ? sobeRef.current.value : null,
+            kupatila: kupatilaRef.current.value ? kupatilaRef.current.value : null,
+            oprema: opremaRef.current.value ? opremaRef.current.value : null,
+            pomocnoSkladiste: pomocnoSkladisteRef.current.value ? pomocnoSkladisteRef.current.value : null,
+            ventilacija: ventilacijaRef.current.value ? ventilacijaRef.current.value : null,
         }))
     }
 
@@ -35,39 +82,39 @@ function SearchingMenu() {
                             <div className="col-md-12 mb-2">
                                 <div className="form-group">
                                     <label className="pb-2" htmlFor="Type">Naziv</label>
-                                    <input type="text" className="form-control form-control-lg form-control-a" placeholder="Naziv" />
+                                    <input ref={nazivRef} type="text" className="form-control form-control-lg form-control-a" placeholder="Naziv" />
                                 </div>
                             </div>
                             <div className="col-md-6 mb-2">
                                 <div className="form-group mt-3">
                                     <label className="pb-2" htmlFor="Type">Tip</label>
-                                    <select className="form-control form-select form-control-a" id="Type">
-                                        <option>Poslovni objekti</option>
-                                        <option>Stambeni objekti</option>
+                                    <select className="form-control form-select form-control-a" id="Type" ref={tipRef} onChange={(event) => setTypeOfRealEstate(event.target.value)}>
+                                        <option value="lokali">Lokali</option>
+                                        <option value="stan/kuca">Stambeni objekti</option>
                                     </select>
                                 </div>
                             </div>
                             <div className="col-md-6 mb-2">
                                 <div className="form-group mt-3">
                                     <label className="pb-2" htmlFor="city">Grad</label>
-                                    <select className="form-control form-select form-control-a" id="city">
-                                        <option>Svi</option>
-                                        <option>Beograd</option>
-                                        <option>Novi Sad</option>
-                                        <option>Nis</option>
+                                    <select className="form-control form-select form-control-a" id="city" ref={gradRef}>
+                                        <option value=""></option>
+                                        {cities.map(city => {return(
+                                            <option key={city.id} value={city.id}>{city.attributes.name}</option>
+                                        )})}
                                     </select>
                                 </div>
                             </div>
                             <div className="col-md-6 mb-2">
                                 <div className="form-group mt-3">
                                     <label className="pb-2" htmlFor="price">Minimalna cena</label>
-                                    <input min={50000} type="number" className="form-control form-control-a" id="min-price" />
+                                    <input min={50000} type="number" className="form-control form-control-a" id="min-price" ref={minCenaRef} />
                                 </div>
                             </div>
                             <div className="col-md-6 mb-2">
                                 <div className="form-group mt-3">
                                     <label className="pb-2" htmlFor="price">Maksimalna cena</label>
-                                    <input min={50001} type="number" className="form-control form-control-a" id="max-price" />
+                                    <input min={50001} type="number" className="form-control form-control-a" id="max-price" ref={maxCenaRef} />
                                 </div>
                             </div>
 
@@ -83,49 +130,80 @@ function SearchingMenu() {
 
                                     <div className="col-md-6 mb-2">
                                         <div className="form-group mt-3">
+                                            <label className="pb-2" htmlFor="price">Minimalna kvadratura</label>
+                                            <input min={1} type="number" className="form-control form-control-a" id="min-surface" ref={minKvadraturaRef} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="form-group mt-3">
+                                            <label className="pb-2" htmlFor="price">Maksimalna kvadratura</label>
+                                            <input min={2} type="number" className="form-control form-control-a" id="max-surface" ref={maxKvadraturaRef} />
+                                        </div>
+                                    </div>
+
+                                    {typeOfRealEstate === 'stan/kuca' &&
+                                    <>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="form-group mt-3">
                                             <label className="pb-2" htmlFor="bedrooms">Spavace sobe</label>
-                                            <select className="form-control form-select form-control-a" id="bedrooms">
+                                            <select className="form-control form-select form-control-a" id="bedrooms" ref={sobeRef}>
                                                 <option></option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
-                                                <option>04</option>
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                                <option value="4">04</option>
+                                                <option value="5">05</option>
+                                                <option value="6">06</option>
+                                                <option value="7">07</option>
+                                                <option value="8">08</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div className="col-md-6 mb-2">
                                         <div className="form-group mt-3">
                                             <label className="pb-2" htmlFor="bathrooms">Kupatila</label>
-                                            <select className="form-control form-select form-control-a" id="bathrooms">
+                                            <select className="form-control form-select form-control-a" id="bathrooms" ref={kupatilaRef}>
                                                 <option></option>
-                                                <option>01</option>
-                                                <option>02</option>
-                                                <option>03</option>
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div className="col-6 form-check">
-                                        <input type="checkbox" id="chekcboxParkingMesto" className="form-check-input" />
+                                        <input type="checkbox" id="chekcboxParkingMesto" className="form-check-input" ref={parkingMestoRef} />
                                         <label className="form-label">Parking mesto</label>
                                     </div>
 
                                     <div className="col-6 form-check">
-                                        <input type="checkbox" id="checkboxTerasa" className="form-check-input" />
-                                        <label className="form-label">Terasa</label>
-                                    </div>
-                                    <div className="col-6 form-check">
-                                        <input type="checkbox" id="checkboxOstava" className="form-check-input" />
+                                        <input type="checkbox" id="checkboxOstava" className="form-check-input" ref={ostavaRef} />
                                         <label className="form-label">Ostava</label>
                                     </div>
                                     <div className="col-6 form-check">
-                                        <input type="checkbox" id="checkboxPrikljucakKablovska" className="form-check-input" />
-                                        <label className="form-label">Prikljucak za kablovsku</label>
-                                    </div>
-                                    <div className="col-6 form-check">
-                                        <input type="checkbox" id="checkboxZajednickaProstorija" className="form-check-input" />
+                                        <input type="checkbox" id="checkboxZajednickaProstorija" className="form-check-input" ref={zajednickaProstorijaRef} />
                                         <label className="form-label">Zajednicka prostorija</label>
                                     </div>
+                                    </>
+                                    }
+
+                                    {typeOfRealEstate === 'lokali' &&
+                                    <>
+                                        <div className="col-6 form-check">
+                                            <input type="checkbox" id="chekcboxVentilacija" className="form-check-input" ref={ventilacijaRef} />
+                                            <label className="form-label">Ventilacija</label>
+                                        </div>
+
+                                        <div className="col-6 form-check">
+                                            <input type="checkbox" id="checkboxPomocnoSkladiste" className="form-check-input" ref={pomocnoSkladisteRef} />
+                                            <label className="form-label">Pomocno skladiste</label>
+                                        </div>
+                                        <div className="col-6 form-check">
+                                            <input type="checkbox" id="checkboxOprema" className="form-check-input" ref={opremaRef} />
+                                            <label className="form-label">Sa opremom</label>
+                                        </div>
+                                    </>
+                                    }
                                 </div>
 
 
@@ -142,5 +220,3 @@ function SearchingMenu() {
         </>
     )
 }
-
-export default SearchingMenu;

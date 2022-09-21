@@ -1,11 +1,16 @@
 import { useContext, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import {SearchContext} from "../context/SearchContext";
 import {UserContext} from "../context/UserContext";
 import { select, onscroll } from "../utils"
 
 function Header() {
 
     const {user, setUser} = useContext(UserContext);
+    const { searchOptions, setSearchOptions } = useContext(SearchContext);
+
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         let selectHNavbar = select('.navbar-default')
@@ -32,6 +37,44 @@ function Header() {
         body.classList.remove('box-collapse-closed')
     }
 
+    function routeToHomesPage(event) {
+        event.preventDefault();
+        setSearchOptions({
+            naziv: null,
+            tip: null,
+            grad: null,
+            minCena: null,
+            maxCena: null,
+            minKvadratura: null,
+            maxKvadratura: null,
+            sobe: null,
+            kupatila: null,
+            parkingMesto: null,
+            ostava: null,
+            zajednickaProstorija: null
+        });
+        navigate("/homes");
+    }
+
+    function routeToLocalsPage(event) {
+        event.preventDefault();
+        setSearchOptions({
+            naziv: null,
+            tip: null,
+            grad: null,
+            minCena: null,
+            maxCena: null,
+            minKvadratura: null,
+            maxKvadratura: null,
+            sobe: null,
+            kupatila: null,
+            parkingMesto: null,
+            ostava: null,
+            zajednickaProstorija: null
+        })
+        navigate("/locals");
+    }
+
     return (
         <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
             <div className="container">
@@ -50,10 +93,10 @@ function Header() {
                         </li>
 
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nekretnine</a>
+                            <label className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nekretnine</label>
                             <div className="dropdown-menu">
-                                <NavLink className="dropdown-item " to={"/homes"} activeclassname={"active"}>Stanovi/Kuce</NavLink>
-                                <NavLink className="dropdown-item " to={"/locals"} activeclassname={"active"}>Lokali</NavLink>
+                                <NavLink className="dropdown-item " to={"/homes"} activeclassname={"active"} onClick={(e) => routeToHomesPage(e)}>Stanovi/Kuce</NavLink>
+                                <NavLink className="dropdown-item " to={"/locals"} activeclassname={"active"} onClick={(e) => routeToLocalsPage(e)}>Lokali</NavLink>
                             </div>
                         </li>
 

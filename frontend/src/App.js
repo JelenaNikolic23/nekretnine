@@ -25,9 +25,8 @@ function App() {
 
   return (
     <div className="App">
-
-      <Header />
       <SearchContextProvider>
+        <Header />
         <SearchingMenu />
         <Routes>
           <Route path="/real-estates/new" exact element={<CreateRealEstate />} />
@@ -41,9 +40,9 @@ function App() {
           <Route path="/" index element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Footer />
+        <ScrollToTopButton />
       </SearchContextProvider>
-      <Footer />
-      <ScrollToTopButton />
     </div>
   );
 }

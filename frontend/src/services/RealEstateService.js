@@ -3,15 +3,58 @@ import axios from 'axios';
 
 
 function getHomes(page=1, searchOptions) {
-    const queryParams = jQuery.param({
+    const filteringOptions = {
         "filters[type]": "stan/kuca",
-        "filters[title][$contains]": searchOptions?.name,
         "pagination[page]": page,
         "pagination[pageSize]": 9,
         populate: "*"
-    });
+    };
 
-    return axios.get("http://localhost:1337/api/real-estates?" + queryParams);
+    if (searchOptions?.naziv) {
+        filteringOptions["filters[title][$contains]"] = searchOptions?.naziv;
+    }
+
+    if (searchOptions?.grad) {
+        filteringOptions["filters[city]"] = searchOptions?.grad;
+    }
+
+    if (searchOptions?.minCena) {
+        filteringOptions["filters[price][$gt]"] = searchOptions?.minCena;
+    }
+
+    if (searchOptions?.maxCena) {
+        filteringOptions["filters[price][$lt]"] = searchOptions?.maxCena
+    }
+
+    if (searchOptions?.minKvadratura) {
+        filteringOptions["filters[surface][$gt]"] = searchOptions?.minKvadratura
+    }
+
+    if (searchOptions?.maxKvadratura) {
+        filteringOptions["filters[surface][$lt]"] = searchOptions?.maxKvadratura
+    }
+
+    if (searchOptions?.sobe) {
+        filteringOptions["filters[rooms]"] = +searchOptions?.sobe
+    }
+
+    if (searchOptions?.kupatila) {
+        filteringOptions["filters[bathrooms]"] = +searchOptions?.kupatila
+    }
+
+    if (searchOptions?.parkingMesto) {
+        filteringOptions["filters[parkingPlace]"] = true;
+    }
+
+    if (searchOptions?.ostava) {
+        filteringOptions["filters[keepingRoom]"] = true;
+    }
+    
+    if (searchOptions?.zajednickaProstorija) {
+        filteringOptions["filters[sharedRoom]"] = true;
+    }
+
+    return axios.get("http://localhost:1337/api/real-estates?" + jQuery.param(filteringOptions));
 }
 
 function getSingleHome(homeId) {

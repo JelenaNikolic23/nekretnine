@@ -5,7 +5,21 @@ export const SearchContext = createContext(null);
 export default ({children}) => {
 
     const [searchOptions, setSearchOptions] = useState({
-        name: ''
+        naziv: null,
+        tip: null,
+        grad: null,
+        minCena: null,
+        maxCena: null,
+        minKvadratura: null,
+        maxKvadratura: null,
+        sobe: null,
+        kupatila: null,
+        parkingMesto: null,
+        ostava: null,
+        zajednickaProstorija: null,
+        oprema: null,
+        pomocnoSkladiste: null,
+        ventilacija: null
     });
 
     return (
