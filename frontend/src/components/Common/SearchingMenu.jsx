@@ -58,11 +58,11 @@ export default function SearchingMenu() {
             maxCena: maxCenaRef.current.value ? maxCenaRef.current.value : null,
             minKvadratura: minKvadraturaRef.current.value ? minKvadraturaRef.current.value : null,
             maxKvadratura: maxKvadraturaRef.current.value ? maxKvadraturaRef.current.value : null,
-            sobe: sobeRef.current.value ? sobeRef.current.value : null,
-            kupatila: kupatilaRef.current.value ? kupatilaRef.current.value : null,
-            oprema: opremaRef.current.value ? opremaRef.current.value : null,
-            pomocnoSkladiste: pomocnoSkladisteRef.current.value ? pomocnoSkladisteRef.current.value : null,
-            ventilacija: ventilacijaRef.current.value ? ventilacijaRef.current.value : null,
+            sobe: sobeRef.current?.value ? sobeRef.current.value : null,
+            kupatila: kupatilaRef.current?.value ? kupatilaRef.current.value : null,
+            oprema: opremaRef.current?.value ? opremaRef.current.value : null,
+            pomocnoSkladiste: pomocnoSkladisteRef.current?.value ? pomocnoSkladisteRef.current.value : null,
+            ventilacija: ventilacijaRef.current?.value ? ventilacijaRef.current.value : null,
         }))
     }
 

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { getLocals } from "../../services/RealEstateService";
 import { hideLoader, showLoader } from "../../utils";
 import Loader from "../Common/Loader";
 import PageIntro from "../Common/PageIntro";
 import Pagination from "../Common/Pagination";
 import LocalsList from "./LocalsList";
-
+import { SearchContext } from "../../context/SearchContext";
 
 function LocalsPage() {
 
@@ -14,6 +14,8 @@ function LocalsPage() {
         subtitle: "Poslovni objekti",
         pathLabel: "Lokali"
     }
+
+    const { searchOptions, setSearchOptions } = useContext(SearchContext);
 
     const [items, setItems] = useState([]);
 
@@ -28,6 +30,13 @@ function LocalsPage() {
         });
 
     }, []);
+
+    useEffect(() => {
+        showLoader();
+        getLocals(1, searchOptions).then(response => {
+            handleRetrievedLocals(response);
+        })
+      }, [searchOptions]);
 
     function handleRetrievedLocals(response) {
         if (response.status !== 200) {
@@ -71,7 +80,7 @@ function LocalsPage() {
 
     function changePage(pageNumber) {
         showLoader();
-        getLocals(pageNumber).then(response => {
+        getLocals(pageNumber, searchOptions).then(response => {
             handleRetrievedLocals(response);
         });
     }

@@ -66,13 +66,51 @@ function getSingleHome(homeId) {
     return axios.get("http://localhost:1337/api/real-estates/" + homeId + "?" + queryParams);
 }
 
-function getLocals(page=1) {
-    const queryParams = jQuery.param({
+function getLocals(page=1, searchOptions) {
+    const filteringOptions = {
         "filters[type]": "lokal",
         "pagination[page]": page,
         "pagination[pageSize]": 9,
         populate: "*"
-    });
+    }
+
+    if (searchOptions?.naziv) {
+        filteringOptions["filters[title][$contains]"] = searchOptions?.naziv;
+    }
+
+    if (searchOptions?.grad) {
+        filteringOptions["filters[city]"] = searchOptions?.grad;
+    }
+
+    if (searchOptions?.minCena) {
+        filteringOptions["filters[price][$gt]"] = searchOptions?.minCena;
+    }
+
+    if (searchOptions?.maxCena) {
+        filteringOptions["filters[price][$lt]"] = searchOptions?.maxCena
+    }
+
+    if (searchOptions?.minKvadratura) {
+        filteringOptions["filters[surface][$gt]"] = searchOptions?.minKvadratura
+    }
+
+    if (searchOptions?.maxKvadratura) {
+        filteringOptions["filters[surface][$lt]"] = searchOptions?.maxKvadratura
+    }
+
+    if (searchOptions?.oprema) {
+        filteringOptions["filters[equipment]"] = true;
+    }
+
+    if (searchOptions?.pomocnoSkladiste) {
+        filteringOptions["filters[helperWarehouse]"] = true;
+    }
+
+    if (searchOptions?.ventilacija) {
+        filteringOptions["filters[ventilation]"] = true;
+    }
+
+    const queryParams = jQuery.param(filteringOptions);
 
     return axios.get("http://localhost:1337/api/real-estates?" + queryParams);
 }
