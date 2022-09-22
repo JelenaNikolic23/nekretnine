@@ -51,7 +51,7 @@ function AgentsPage() {
                 lastName: item.attributes.lastName,
                 description: item.attributes.description,
                 phoneNumber: item.attributes.phoneNumber,
-                email: "TODO",
+                email: item.attributes.email,
                 instagramLink: item.attributes.instagramLink,
                 facebookLink: item.attributes.facebookLink,
                 linkedInLink: item.attributes.linkedInLink,

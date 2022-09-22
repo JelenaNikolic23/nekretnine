@@ -25,7 +25,7 @@ function ContactAgentSection(props) {
                             </li>
                             <li className="d-flex justify-content-between">
                                 <strong>Email:</strong>
-                                <span className="color-text-a">TODO</span>
+                                <span className="color-text-a">{props.agent.email}</span>
                             </li>
                         </ul>
                         <div className="socials-a">
