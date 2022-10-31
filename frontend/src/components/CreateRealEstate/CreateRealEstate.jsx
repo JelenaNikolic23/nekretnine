@@ -6,6 +6,7 @@ import MultipleImagesUploader from "../Common/MultipleImagesUploader";
 import PageIntro from "../Common/PageIntro";
 import { ToastContainer, toast } from 'react-toastify';
 import { UserContext } from "../../context/UserContext";
+import { getAllCities } from "../../services/CommonServices";
 
 export default function CreateRealEstate(props) {
 
@@ -49,6 +50,8 @@ export default function CreateRealEstate(props) {
         "pictures": [],
     });
 
+    const [cities, setCities] = useState([]);
+
     const [imagesArray, setImagesArray] = useState([]);
     const [homesSelelected, setHomesSelected] = useState(true);
     const [savingInProgress, setSavingInProgress] = useState(false);
@@ -57,7 +60,16 @@ export default function CreateRealEstate(props) {
         if (!user) {
             navigation("/login");
         }
+
+        getCities();
+        
     }, []);
+
+    const getCities = () => {
+        getAllCities().then(res => {
+            setCities(res.data.data);
+        })
+    };
 
     const handleTextProperyChanged = (event) => {
         setNewRealEstate(prev => ({
@@ -83,7 +95,7 @@ export default function CreateRealEstate(props) {
     const handleCheckProperyChanged = (event) => {
         setNewRealEstate(prev => ({
             ...prev,
-            [event.target.name]: event.target.value === "on"
+            [event.target.name]: event.target.checked
         }));
     }
 
@@ -105,6 +117,8 @@ export default function CreateRealEstate(props) {
                 });
             return;
         }
+
+        newRealEstate.city = parseInt(newRealEstate.city);
 
         setSavingInProgress(true);
         saveNewRealEstate(newRealEstate, user)
@@ -185,8 +199,11 @@ export default function CreateRealEstate(props) {
                 <div className="mb-3">
                     <label htmlFor="city" className="fw-bold">Grad</label>
                     <select className="form-select" id="city" name="city" onChange={handleIntNumberProperyChanged}>
-                        <option value={"1"}>Beograd</option>
-                        <option value={"2"}>Novi Sad</option>
+                        {cities.map((city, index) => {
+                            return (
+                                <option key={index} value={city.id}>{city.attributes.name}</option>
+                            )}
+                        )}
                     </select>
                 </div>
                 <div className="mb-3">

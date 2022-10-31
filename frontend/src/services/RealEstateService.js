@@ -99,7 +99,7 @@ function getLocals(page=1, searchOptions) {
     }
 
     if (searchOptions?.oprema) {
-        filteringOptions["filters[equipment]"] = true;
+        filteringOptions["filters[equipmentIncluded]"] = true;
     }
 
     if (searchOptions?.pomocnoSkladiste) {
@@ -130,7 +130,7 @@ function saveNewRealEstate(requestBody, user) {
         ...requestBody,
         "createdAt": (new Date()).toISOString(),
         "publishedAt": (new Date()).toISOString(),
-        "agent": user.user.id
+        "agent": parseInt(user.user.id)
         }
     },
     {

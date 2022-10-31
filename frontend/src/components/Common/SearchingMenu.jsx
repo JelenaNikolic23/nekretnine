@@ -60,9 +60,12 @@ export default function SearchingMenu() {
             maxKvadratura: maxKvadraturaRef.current.value ? maxKvadraturaRef.current.value : null,
             sobe: sobeRef.current?.value ? sobeRef.current.value : null,
             kupatila: kupatilaRef.current?.value ? kupatilaRef.current.value : null,
-            oprema: opremaRef.current?.value ? opremaRef.current.value : null,
-            pomocnoSkladiste: pomocnoSkladisteRef.current?.value ? pomocnoSkladisteRef.current.value : null,
-            ventilacija: ventilacijaRef.current?.value ? ventilacijaRef.current.value : null,
+            parkingMesto: parkingMestoRef.current?.checked ? parkingMestoRef.current.checked : null,
+            ostava: ostavaRef.current?.checked ? ostavaRef.current.checked : null,
+            zajednickaProstorija: zajednickaProstorijaRef.current?.checked ? zajednickaProstorijaRef.current.checked : null,
+            oprema: opremaRef.current?.checked ? opremaRef.current.checked : null,
+            pomocnoSkladiste: pomocnoSkladisteRef.current?.checked ? pomocnoSkladisteRef.current.checked : null,
+            ventilacija: ventilacijaRef.current?.checked ? ventilacijaRef.current.checked : null,
         }))
     }
 
