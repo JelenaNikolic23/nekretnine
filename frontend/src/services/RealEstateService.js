@@ -34,6 +34,10 @@ function getHomes(page=1, searchOptions) {
         filteringOptions["filters[surface][$lt]"] = searchOptions?.maxKvadratura
     }
 
+    if (searchOptions?.spratnost) {
+        filteringOptions["filters[floorNumber]"] = searchOptions?.spratnost
+    }
+
     if (searchOptions?.sobe) {
         filteringOptions["filters[rooms]"] = +searchOptions?.sobe
     }
@@ -52,6 +56,46 @@ function getHomes(page=1, searchOptions) {
     
     if (searchOptions?.zajednickaProstorija) {
         filteringOptions["filters[sharedRoom]"] = true;
+    }
+
+    if (searchOptions?.prodaja) {
+        filteringOptions["filters[forSale]"] = true;
+    }
+
+    if (searchOptions?.grejanje) {
+        filteringOptions["filters[heating]"] = searchOptions.grejanje;
+    }
+
+    if (searchOptions?.uknjizen) {
+        filteringOptions["filters[legalized]"] = searchOptions.uknjizen;
+    }
+
+    if (searchOptions?.garaze) {
+        filteringOptions["filters[garages]"] = searchOptions.garaze;
+    }
+
+    if (searchOptions?.stanje) {
+        filteringOptions["filters[state]"] = searchOptions.stanje;
+    }
+
+    if (searchOptions?.internet) {
+        filteringOptions["filters[internet]"] = searchOptions.internet;
+    }
+
+    if (searchOptions?.fiksniTelefon) {
+        filteringOptions["filters[phone]"] = searchOptions.fiksniTelefon;
+    }
+
+    if (searchOptions?.optickaMreza) {
+        filteringOptions["filters[opticalNetwork]"] = searchOptions.optickaMreza;
+    }
+    
+    if (searchOptions?.sortByPrice) {
+        if (searchOptions.sortByPrice.includes('asc')) {
+            filteringOptions["sort[0]"] = 'price:asc';
+        } else if (searchOptions.sortByPrice.includes('desc')) {
+            filteringOptions["sort[0]"] = 'price:desc';
+        }
     }
 
     return axios.get("http://localhost:1337/api/real-estates?" + jQuery.param(filteringOptions));
@@ -108,6 +152,39 @@ function getLocals(page=1, searchOptions) {
 
     if (searchOptions?.ventilacija) {
         filteringOptions["filters[ventilation]"] = true;
+    }
+
+    if (searchOptions?.prodaja) {
+        filteringOptions["filters[forSale]"] = true;
+    }
+
+    if (searchOptions?.grejanje) {
+        filteringOptions["filters[heating]"] = searchOptions.grejanje;
+    }
+
+    if (searchOptions?.uknjizen) {
+        filteringOptions["filters[legalized]"] = searchOptions.uknjizen;
+    }
+
+    if (searchOptions?.internet) {
+        filteringOptions["filters[internet]"] = searchOptions.internet;
+    }
+
+    if (searchOptions?.fiksniTelefon) {
+        filteringOptions["filters[phone]"] = searchOptions.fiksniTelefon;
+    }
+
+    if (searchOptions?.optickaMreza) {
+        filteringOptions["filters[opticalNetwork]"] = searchOptions.optickaMreza;
+    }
+
+    if (searchOptions?.sortByPrice) {
+        console.log(searchOptions?.sortByPrice)
+        if (searchOptions.sortByPrice.includes('asc')) {
+            filteringOptions["sort[0]"] = 'price';
+        } else if (searchOptions.sortByPrice.includes('desc')) {
+            filteringOptions["sort[0]"] = '-price';
+        }
     }
 
     const queryParams = jQuery.param(filteringOptions);

@@ -1,4 +1,7 @@
+import MapComponent from "../Common/MapComponent";
+
 function HomeDetails(props) {
+
     return (
         <div className="col-sm-12">
             <div className="row justify-content-between">
@@ -68,6 +71,10 @@ function HomeDetails(props) {
                                     <strong>Terase:</strong>
                                     <span>{props.home.balcons}</span>
                                 </li>
+                                <li className="d-flex justify-content-between">
+                                    <strong>Stanje:</strong>
+                                    <span>{props.home.state}</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -98,7 +105,13 @@ function HomeDetails(props) {
                             {props.home.cableNetwork && <li>Prikljucak za kablovsku</li>}
                             {props.home.parkingPlace && <li>Parking mesto</li>}
                             {props.home.sharedRoom && <li>Zajednicka prostorija</li>}
+                            {props.home.internet && <li>Internet</li>}
+                            {props.home.phone && <li>Fiksni telefon</li>}
+                            {props.home.opticalNetwork && <li>Opticka mreza</li>}
                         </ul>
+                    </div>
+                    <div className="row section-t3">
+                        <MapComponent lat={props.home.latitude} lng={props.home.longitude} />
                     </div>
                 </div>
             </div>

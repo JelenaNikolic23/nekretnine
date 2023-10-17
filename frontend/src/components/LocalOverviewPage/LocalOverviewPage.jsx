@@ -35,6 +35,9 @@ function LocalOverviewPage(props) {
         equipmentIncluded: false,
         helperWarehouse: false,
         ventilation: false,
+        latitude: 0,
+        longitude: 0,
+        forSale: false
     });
 
     const [imageUrls, setImageUrls] = useState([]);
@@ -74,6 +77,12 @@ function LocalOverviewPage(props) {
                 equipmentIncluded: item.attributes.equipmentIncluded,
                 helperWarehouse: item.attributes.helperWarehouse,
                 ventilation: item.attributes.ventilation,
+                latitude: item.attributes.latitude,
+                longitude: item.attributes.longitude,
+                forSale: item.attributes.forSale,
+                internet: item.attributes.internet,
+                opticalNetwork: item.attributes.opticalNetwork,
+                phone: item.attributes.phone,
             };
             
             setAgent({

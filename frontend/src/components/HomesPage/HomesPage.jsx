@@ -78,9 +78,32 @@ function HomesPage() {
     hideLoader();
   }
 
+  
+  function sortBy(e) {
+    setSearchOptions({
+      ...searchOptions,
+      sortByPrice: e.target.value
+    });
+  }
+
   return (
     <>
       <PageIntro data={pageIntroProps} />
+      {items.length !== 0 &&
+      <form className="m-5">
+        <div className="form-group row">
+          <div className="col-9 text-end">
+            <label className="form-text">Sort by</label>
+          </div>
+          <div className="col-3 text-right">
+            <select className="form-control" onChange={sortBy}>
+              <option value=""></option>
+              <option value="price-asc">Cena rastuce</option>
+              <option value="price-desc">Cena opadajuce</option>
+            </select>
+          </div>
+        </div>
+      </form>}
       <HomesList items={items} />
       <Pagination pagination={pagination} changePage={changePage} />
       <Loader />

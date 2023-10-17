@@ -1,3 +1,5 @@
+import MapComponent from "../Common/MapComponent";
+
 function LocalDetails(props) {
     return (
         <div className="col-sm-12">
@@ -85,7 +87,13 @@ function LocalDetails(props) {
                             {props.local.equipmentIncluded && <li>Ukljucena oprema</li>}
                             {props.local.helperWarehouse && <li>Pomocni prostor</li>}
                             {props.local.ventilation && <li>Ventilacija</li>}
+                            {props.local.internet && <li>Internet</li>}
+                            {props.local.phone && <li>Fiksni telefon</li>}
+                            {props.local.opticalNetwork && <li>Opticka mreza</li>}
                         </ul>
+                    </div>
+                    <div className="row section-t3">
+                        <MapComponent lat={props.local.latitude} lng={props.local.longitude} />
                     </div>
                 </div>
             </div>

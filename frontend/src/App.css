@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.swiper-slide {
+  max-height: 50vh;
+}
+
+.swiper {
+  max-height: 50vh;
+}

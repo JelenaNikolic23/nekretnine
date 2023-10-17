@@ -2,6 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 
 function HomeOverviewCarousel(props) {
+
     return (
         <div className="row justify-content-center my-4">
             <div className="col-lg-8">
@@ -9,7 +10,7 @@ function HomeOverviewCarousel(props) {
                     spaceBetween={0}
                     slidesPerView={1}
                     centeredSlides
-                    loop={true}
+                    loop={false}
                     speed={2000}
                     autoplay={{
                         delay: 5000,
@@ -17,9 +18,11 @@ function HomeOverviewCarousel(props) {
                     }}
                     pagination={{ clickable: true }}
                     modules={[Autoplay, Pagination]}
-                    className="intro postition-relative">
+                    className="intro postition-relative"
+                    initialSlide={0}
+                    >
                     
-                    {props.images.map(imageUrl => {
+                    {props.images.sort().map(imageUrl => {
                         const style = {
                             backgroundImage: `url('${imageUrl}')`
                         }

@@ -48,6 +48,9 @@ export default function CreateRealEstate(props) {
         "rooms": 0,
         "agent": 1,
         "pictures": [],
+        "latitude": 0,
+        "longitude": 0,
+        "forSale": false
     });
 
     const [cities, setCities] = useState([]);
@@ -185,6 +188,10 @@ export default function CreateRealEstate(props) {
                     <label htmlFor="title" className="fw-bold">Naslov</label>
                     <input type="text" className="form-control" id="title" name="title" onChange={handleTextProperyChanged}  />
                 </div>
+                <div className="mb-3 form-check">
+                    <input type="checkbox" className="form-check-input" id="forSale" name="forSale" onChange={handleCheckProperyChanged} />
+                    <label htmlFor="forSale" className="fw-bold form-check-label">Prodaja</label>
+                </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="fw-bold">Opis</label>
                     <textarea className="form-control" rows={3} id="description" name="description" onChange={handleTextProperyChanged}></textarea>
@@ -213,6 +220,14 @@ export default function CreateRealEstate(props) {
                 <div className="mb-3">
                     <label htmlFor="price" className="fw-bold">Cena</label>
                     <input type="number" className="form-control" id="price" name="price" onChange={handleIntNumberProperyChanged} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="latitude" className="fw-bold">Latituda</label>
+                    <input type="number" className="form-control" id="latitude" name="latitude" onChange={handleIntNumberProperyChanged} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="longitude" className="fw-bold">Longituda</label>
+                    <input type="number" className="form-control" id="longitude" name="longitude" onChange={handleIntNumberProperyChanged} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="surface" className="fw-bold">Povrsina</label>
@@ -318,6 +333,21 @@ export default function CreateRealEstate(props) {
                         </div>
                     </>
                     }
+                </div>
+
+                <div className="row mb-3">
+                    <div className="col-4 d-flex justify-content-start" style={{columnGap: "5px"}}>
+                        <input type="checkbox" className="form-check-input mr-2" id="internet" name="internet" onChange={handleCheckProperyChanged} />
+                        <label htmlFor="internet" className="form-check-label">Internet</label>
+                    </div>
+                    <div className="col-4 d-flex justify-content-start" style={{columnGap: "5px"}}>
+                        <input type="checkbox" className="form-check-input mr-2" id="opticalNetwork" name="opticalNetwork" onChange={handleCheckProperyChanged}  />
+                        <label htmlFor="opticalNetwork" className="form-check-label">Opticka mreza</label>
+                    </div>
+                    <div className="col-4 d-flex justify-content-start" style={{columnGap: "5px"}}>
+                        <input type="checkbox" className="form-check-input mr-2" id="phone" name="phone" onChange={handleCheckProperyChanged} />
+                        <label htmlFor="phone" className="form-check-label">Fiksni telefon</label>
+                    </div>
                 </div>
 
                 <div className="my-5">

@@ -104,6 +104,36 @@
     },
     "outsideSurface": {
       "type": "integer"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "forSale": {
+      "type": "boolean",
+      "default": false
+    },
+    "internet": {
+      "type": "boolean",
+      "default": false
+    },
+    "phone": {
+      "type": "boolean",
+      "default": false
+    },
+    "opticalNetwork": {
+      "type": "boolean",
+      "default": false
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "Prazan",
+        "Polunamesten",
+        "Namesten"
+      ]
     }
   }
 }

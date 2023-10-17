@@ -36,6 +36,8 @@ function HomeOverviewPage() {
         keepingRoom: false,
         parkingPlace: false,
         sharedRoom: false,
+        latitude: 0,
+        longitude: 0
     });
     const [imageUrls, setImageUrls] = useState([]);
     const [agent, setAgent] = useState({});
@@ -78,6 +80,13 @@ function HomeOverviewPage() {
                 keepingRoom: item.attributes.keepingRoom,
                 parkingPlace: item.attributes.parkingPlace,
                 sharedRoom: item.attributes.sharedRoom,
+                latitude: item.attributes.latitude,
+                longitude: item.attributes.longitude,
+                forSale: item.attributes.forSale,
+                internet: item.attributes.internet,
+                opticalNetwork: item.attributes.opticalNetwork,
+                phone: item.attributes.phone,
+                state: item.attributes.state,
             };
             
             setAgent({

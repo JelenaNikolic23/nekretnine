@@ -9,7 +9,7 @@ function LocalOverviewCarousel(props) {
                     spaceBetween={0}
                     slidesPerView={1}
                     centeredSlides
-                    loop={true}
+                    loop={false}
                     speed={2000}
                     autoplay={{
                         delay: 5000,

@@ -19,7 +19,9 @@ export default function SearchingMenu() {
     const maxCenaRef = useRef(null);
     const minKvadraturaRef = useRef(null);
     const maxKvadraturaRef = useRef(null);
+    const grejanjeRef = useRef(null);
     const sobeRef = useRef(null);
+    const floorNumberRef= useRef(null);
     const kupatilaRef = useRef(null);
     const parkingMestoRef = useRef(null);
     const ostavaRef= useRef(null);
@@ -27,6 +29,13 @@ export default function SearchingMenu() {
     const ventilacijaRef= useRef(null);
     const pomocnoSkladisteRef= useRef(null);
     const opremaRef= useRef(null);
+    const prodajaRef = useRef(null);
+    const uknjizenRef = useRef(null);
+    const garazeRef = useRef(null);
+    const stanjeRef = useRef(null);
+    const internetRef = useRef(null);
+    const phoneRef = useRef(null);
+    const opticalNetworkRef = useRef(null);
 
     useEffect(() => {
         axios.get("http://localhost:1337/api/cities")
@@ -58,6 +67,9 @@ export default function SearchingMenu() {
             maxCena: maxCenaRef.current.value ? maxCenaRef.current.value : null,
             minKvadratura: minKvadraturaRef.current.value ? minKvadraturaRef.current.value : null,
             maxKvadratura: maxKvadraturaRef.current.value ? maxKvadraturaRef.current.value : null,
+            prodaja: prodajaRef.current?.checked ? prodajaRef.current.checked : null,
+            grejanje: grejanjeRef.current?.value ? grejanjeRef.current.value : null,
+            spratnost: floorNumberRef.current.value ? floorNumberRef.current.value : null,
             sobe: sobeRef.current?.value ? sobeRef.current.value : null,
             kupatila: kupatilaRef.current?.value ? kupatilaRef.current.value : null,
             parkingMesto: parkingMestoRef.current?.checked ? parkingMestoRef.current.checked : null,
@@ -66,6 +78,14 @@ export default function SearchingMenu() {
             oprema: opremaRef.current?.checked ? opremaRef.current.checked : null,
             pomocnoSkladiste: pomocnoSkladisteRef.current?.checked ? pomocnoSkladisteRef.current.checked : null,
             ventilacija: ventilacijaRef.current?.checked ? ventilacijaRef.current.checked : null,
+            uknjizen: uknjizenRef.current?.checked ? uknjizenRef.current.checked : null,
+            garaze: garazeRef.current?.value ? garazeRef.current.value : null,
+            stanje: stanjeRef.current?.value ? stanjeRef.current.value : null,
+            internet: internetRef.current?.checked ? internetRef.current.checked : null,
+            optickaMreza: opticalNetworkRef.current?.checked ? opticalNetworkRef.current.checked : null,
+            fiksniTelefon: phoneRef.current?.checked ? phoneRef.current.checked : null,
+
+            sortByPrice: '',
         }))
     }
 
@@ -86,6 +106,12 @@ export default function SearchingMenu() {
                                 <div className="form-group">
                                     <label className="pb-2" htmlFor="Type">Naziv</label>
                                     <input ref={nazivRef} type="text" className="form-control form-control-lg form-control-a" placeholder="Naziv" />
+                                </div>
+                            </div>
+                            <div className="col-md-12 my-2">
+                                <div className="form-check">
+                                    <label className="form-check-label" htmlFor="Type">Prodaja</label>
+                                    <input ref={prodajaRef} type="checkbox" className="form-check-input" />
                                 </div>
                             </div>
                             <div className="col-md-6 mb-2">
@@ -143,8 +169,19 @@ export default function SearchingMenu() {
                                             <input min={2} type="number" className="form-control form-control-a" id="max-surface" ref={maxKvadraturaRef} />
                                         </div>
                                     </div>
+                                    <div className="col-md-6 mb-2">
+                                    <div className="form-group mt-3">
+                                        <label className="pb-2" htmlFor="Type">Grejanje</label>
+                                        <select className="form-control form-select form-control-a" id="Type" ref={grejanjeRef}>
+                                            <option value=""></option>
+                                            <option value="CG">CG</option>
+                                            <option value="Gas">Gas</option>
+                                            <option value="Struja">Struja</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                                    {typeOfRealEstate === 'stan/kuca' &&
+                                {typeOfRealEstate === 'stan/kuca' &&
                                     <>
                                     <div className="col-md-6 mb-2">
                                         <div className="form-group mt-3">
@@ -162,6 +199,7 @@ export default function SearchingMenu() {
                                             </select>
                                         </div>
                                     </div>
+
                                     <div className="col-md-6 mb-2">
                                         <div className="form-group mt-3">
                                             <label className="pb-2" htmlFor="bathrooms">Kupatila</label>
@@ -174,24 +212,53 @@ export default function SearchingMenu() {
                                         </div>
                                     </div>
 
-                                    <div className="col-6 form-check">
-                                        <input type="checkbox" id="chekcboxParkingMesto" className="form-check-input" ref={parkingMestoRef} />
-                                        <label className="form-label">Parking mesto</label>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="form-group mt-3">
+                                            <label className="pb-2" htmlFor="state">Stanje</label>
+                                            <select className="form-control form-select form-control-a" id="state" ref={stanjeRef}>
+                                                <option></option>
+                                                <option value="Prazan">Prazan</option>
+                                                <option value="Polunameste">Polunamesten</option>
+                                                <option value="Namesten">Namesten</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div className="col-6 form-check">
-                                        <input type="checkbox" id="checkboxOstava" className="form-check-input" ref={ostavaRef} />
-                                        <label className="form-label">Ostava</label>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="form-group mt-3">
+                                            <label className="pb-2" htmlFor="floorNumber">Sprat</label>
+                                            <input min={0} type="number" className="form-control form-control-a" id="floorNumber" ref={floorNumberRef} />
+                                        </div>
                                     </div>
-                                    <div className="col-6 form-check">
-                                        <input type="checkbox" id="checkboxZajednickaProstorija" className="form-check-input" ref={zajednickaProstorijaRef} />
-                                        <label className="form-label">Zajednicka prostorija</label>
+                                    
+                                    <div>
+                                        <div className="col-6 form-check">
+                                            <input type="checkbox" id="chekcboxParkingMesto" className="form-check-input" ref={parkingMestoRef} />
+                                            <label className="form-label">Parking mesto</label>
+                                        </div>
+
+                                        <div className="col-6 form-check">
+                                            <input type="checkbox" id="checkboxOstava" className="form-check-input" ref={ostavaRef} />
+                                            <label className="form-label">Ostava</label>
+                                        </div>
+                                        <div className="col-6 form-check">
+                                            <input type="checkbox" id="checkboxZajednickaProstorija" className="form-check-input" ref={zajednickaProstorijaRef} />
+                                            <label className="form-label">Zajednicka prostorija</label>
+                                        </div>
                                     </div>
                                     </>
                                     }
 
                                     {typeOfRealEstate === 'lokali' &&
                                     <>
+
+                                        <div className="col-md-6 mb-2">
+                                            <div className="form-group mt-3">
+                                                <label className="pb-2" htmlFor="garage">Garaze</label>
+                                                <input max={5} type="number" className="form-control form-control-a" id="garage" ref={garazeRef} />
+                                            </div>
+                                        </div>
+
                                         <div className="col-6 form-check">
                                             <input type="checkbox" id="chekcboxVentilacija" className="form-check-input" ref={ventilacijaRef} />
                                             <label className="form-label">Ventilacija</label>
@@ -207,9 +274,27 @@ export default function SearchingMenu() {
                                         </div>
                                     </>
                                     }
+
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxUknjizen" className="form-check-input" ref={uknjizenRef} />
+                                        <label className="form-label">Uknjizen</label>
+                                    </div>
+
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxInternet" className="form-check-input" ref={internetRef} />
+                                        <label className="form-label">Internet</label>
+                                    </div>
+
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxOptics" className="form-check-input" ref={opticalNetworkRef} />
+                                        <label className="form-label">Opticka mreza</label>
+                                    </div>
+
+                                    <div className="col-6 form-check">
+                                        <input type="checkbox" id="checkboxPhone" className="form-check-input" ref={phoneRef} />
+                                        <label className="form-label">Fiksni telefon</label>
+                                    </div>
                                 </div>
-
-
 
                             </div>
 
