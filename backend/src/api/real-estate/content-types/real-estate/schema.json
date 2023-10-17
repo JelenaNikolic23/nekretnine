@@ -106,10 +106,10 @@
       "type": "integer"
     },
     "latitude": {
-      "type": "decimal"
+      "type": "float"
     },
     "longitude": {
-      "type": "decimal"
+      "type": "float"
     },
     "forSale": {
       "type": "boolean",

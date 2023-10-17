@@ -13,7 +13,7 @@ class MapComponent extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={14}
+        zoom={15}
         style={mapStyles}
         initialCenter={{ lat, lng }}
       >
