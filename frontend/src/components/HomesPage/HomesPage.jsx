@@ -9,9 +9,9 @@ import { SearchContext } from "../../context/SearchContext";
 
 function HomesPage() {
   const pageIntroProps = {
-    title: "Kuce i stanovi",
+    title: "Kuće i stanovi",
     subtitle: "Stambeni objekti",
-    pathLabel: "Kuce i stanovi",
+    pathLabel: "Kuće i stanovi",
   };
 
   const { searchOptions, setSearchOptions } = useContext(SearchContext);
@@ -19,35 +19,34 @@ function HomesPage() {
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    total: 1
+    total: 1,
   });
 
   function changePage(pageNumber) {
     showLoader();
-    getHomes(pageNumber, searchOptions).then(response => {
+    getHomes(pageNumber, searchOptions).then((response) => {
       handleRetrievedHomes(response);
     });
   }
 
   useEffect(() => {
-    getHomes().then(response => {
+    getHomes().then((response) => {
       handleRetrievedHomes(response);
     });
   }, []);
 
   useEffect(() => {
     showLoader();
-    getHomes(1, searchOptions).then(response => {
+    getHomes(1, searchOptions).then((response) => {
       handleRetrievedHomes(response);
-    })
+    });
   }, [searchOptions]);
 
   function handleRetrievedHomes(response) {
     if (response.status !== 200) {
-
     }
 
-    const flatsAndHouses = response.data.data.map(item => {
+    const flatsAndHouses = response.data.data.map((item) => {
       let imageUrl = "";
       if (item.attributes.pictures.data.length > 0) {
         imageUrl = item.attributes.pictures.data[0].attributes.url;
@@ -60,12 +59,13 @@ function HomesPage() {
         city: item.attributes.city.data.attributes.name,
         rooms: item.attributes.rooms,
         bathrooms: item.attributes.bathrooms,
+        forSale: item.attributes.forSale,
         garages: item.attributes.garages,
         surface: item.attributes.surface,
         price: item.attributes.price,
         imageUrl: "http://localhost:1337" + imageUrl,
         overviewLink: "/homes/" + item.id,
-      }
+      };
     });
 
     setItems(flatsAndHouses);
@@ -73,42 +73,42 @@ function HomesPage() {
     const responsePagination = response.data.meta.pagination;
     setPagination({
       currentPage: responsePagination.page,
-      total: responsePagination.pageCount
+      total: responsePagination.pageCount,
     });
     hideLoader();
   }
 
-  
   function sortBy(e) {
     setSearchOptions({
       ...searchOptions,
-      sortByPrice: e.target.value
+      sortByPrice: e.target.value,
     });
   }
 
   return (
     <>
       <PageIntro data={pageIntroProps} />
-      {items.length !== 0 &&
-      <form className="m-5">
-        <div className="form-group row">
-          <div className="col-9 text-end">
-            <label className="form-text">Sort by</label>
+      {items.length !== 0 && (
+        <form className="m-5">
+          <div className="form-group row">
+            <div className="col-9 text-end">
+              <label className="form-text">Sort by</label>
+            </div>
+            <div className="col-3 text-right">
+              <select className="form-control" onChange={sortBy}>
+                <option value=""></option>
+                <option value="price-asc">Cena rastuce</option>
+                <option value="price-desc">Cena opadajuce</option>
+              </select>
+            </div>
           </div>
-          <div className="col-3 text-right">
-            <select className="form-control" onChange={sortBy}>
-              <option value=""></option>
-              <option value="price-asc">Cena rastuce</option>
-              <option value="price-desc">Cena opadajuce</option>
-            </select>
-          </div>
-        </div>
-      </form>}
+        </form>
+      )}
       <HomesList items={items} />
       <Pagination pagination={pagination} changePage={changePage} />
       <Loader />
     </>
-  )
+  );
 }
 
 export default HomesPage;

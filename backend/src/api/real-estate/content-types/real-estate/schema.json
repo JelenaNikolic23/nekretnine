@@ -20,10 +20,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "lokal",
-        "stan/kuca"
-      ]
+      "enum": ["lokal", "stan/kuca"]
     },
     "location": {
       "type": "string"
@@ -72,12 +69,7 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "floorNumber": {
       "type": "integer"
@@ -87,11 +79,7 @@
     },
     "heating": {
       "type": "enumeration",
-      "enum": [
-        "CG",
-        "Gas",
-        "Struja"
-      ]
+      "enum": ["CG", "Gas", "Struja"]
     },
     "ventilation": {
       "type": "boolean"
@@ -112,8 +100,7 @@
       "type": "float"
     },
     "forSale": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
     "internet": {
       "type": "boolean",
@@ -129,11 +116,7 @@
     },
     "state": {
       "type": "enumeration",
-      "enum": [
-        "Prazan",
-        "Polunamesten",
-        "Namesten"
-      ]
+      "enum": ["Prazan", "Polunamešten", "Namešten"]
     }
   }
 }
