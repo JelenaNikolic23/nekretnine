@@ -24,10 +24,6 @@ function LocalDetails(props) {
             <div className="summary-list">
               <ul className="list">
                 <li className="d-flex justify-content-between">
-                  <strong>ID nekretnine:</strong>
-                  <span>{props.local.id}</span>
-                </li>
-                <li className="d-flex justify-content-between">
                   <strong>Lokacija:</strong>
                   <span>
                     {props.local.location}, {props.local.city}

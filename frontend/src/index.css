@@ -379,7 +379,12 @@ a:hover {
 /*------/ Overlay /------*/
 .overlay-a {
   text-decoration: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 27%,
+    rgba(0, 0, 0, 0.65) 90%
+  );
 }
 
 .overlay {
@@ -639,7 +644,6 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-
   .navbar-default.navbar-trans .nav-item,
   .navbar-default.navbar-reduce .nav-item {
     margin-left: 15px;
@@ -684,12 +688,12 @@ a:hover {
   transform-origin: left;
 }
 
-.navbar-default.navbar-trans .show>.nav-link:before,
-.navbar-default.navbar-trans .active>.nav-link:before,
+.navbar-default.navbar-trans .show > .nav-link:before,
+.navbar-default.navbar-trans .active > .nav-link:before,
 .navbar-default.navbar-trans .nav-link.show:before,
 .navbar-default.navbar-trans .nav-link.active:before,
-.navbar-default.navbar-reduce .show>.nav-link:before,
-.navbar-default.navbar-reduce .active>.nav-link:before,
+.navbar-default.navbar-reduce .show > .nav-link:before,
+.navbar-default.navbar-reduce .active > .nav-link:before,
 .navbar-default.navbar-reduce .nav-link.show:before,
 .navbar-default.navbar-reduce .nav-link.active:before {
   transform: scaleX(1);
@@ -703,8 +707,8 @@ a:hover {
   color: #000000;
 }
 
-.navbar-default.navbar-trans .show>.nav-link,
-.navbar-default.navbar-trans .active>.nav-link,
+.navbar-default.navbar-trans .show > .nav-link,
+.navbar-default.navbar-trans .active > .nav-link,
 .navbar-default.navbar-trans .nav-link.show,
 .navbar-default.navbar-trans .nav-link.active {
   color: #000000;
@@ -728,8 +732,8 @@ a:hover {
   color: #000000;
 }
 
-.navbar-default.navbar-reduce .show>.nav-link,
-.navbar-default.navbar-reduce .active>.nav-link,
+.navbar-default.navbar-reduce .show > .nav-link,
+.navbar-default.navbar-reduce .active > .nav-link,
 .navbar-default.navbar-reduce .nav-link.show,
 .navbar-default.navbar-reduce .nav-link.active {
   color: #000000;
@@ -748,7 +752,8 @@ a:hover {
   opacity: 0;
   filter: alpha(opacity=0);
   visibility: hidden;
-  transition: all 0.5s cubic-bezier(0.3, 0.65, 0.355, 1) 0s, opacity 0.31s ease 0s, height 0s linear 0.36s;
+  transition: all 0.5s cubic-bezier(0.3, 0.65, 0.355, 1) 0s,
+    opacity 0.31s ease 0s, height 0s linear 0.36s;
   margin: 0;
   border-radius: 0;
   padding: 12px 0;
@@ -1156,7 +1161,6 @@ a:hover {
 # Card General
 --------------------------------------------------------------*/
 @media (max-width: 767px) {
-
   .card-box-a,
   .card-box-b,
   .card-box-c,
@@ -1173,7 +1177,6 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-
   .grid .card-box-a,
   .grid .card-box-b,
   .grid .card-box-c,
@@ -1200,7 +1203,6 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-
   .card-box-a:hover .img-a,
   .card-box-a:hover .img-b,
   .card-box-b:hover .img-a,
@@ -1210,7 +1212,6 @@ a:hover {
 }
 
 @media (min-width: 768px) {
-
   .card-box-a .price-a,
   .card-box-b .price-a {
     font-size: 0.9rem;
@@ -1218,7 +1219,6 @@ a:hover {
 }
 
 @media (min-width: 992px) {
-
   .card-box-a .price-a,
   .card-box-b .price-a {
     font-size: 1rem;
@@ -1227,7 +1227,7 @@ a:hover {
 
 .card-overlay {
   position: absolute;
-  width: 100%;
+  width: 85%;
   height: 100%;
   top: 0;
   left: 0;
@@ -1247,7 +1247,12 @@ a:hover {
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 27%, rgba(0, 0, 0, 0.65) 90%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 27%,
+    rgba(0, 0, 0, 0.65) 90%
+  );
 }
 
 /*======================================
@@ -1644,7 +1649,7 @@ a:hover {
 
 .box-comments .list-comments span {
   display: block;
-  color: #2B2A2A;
+  color: #2b2a2a;
   font-style: italic;
 }
 
@@ -2181,38 +2186,34 @@ footer .credits {
   font-size: 14px;
 }
 
-
-
-
-
 .upload__box {
   padding: 40px;
 }
 
 .upload__inputfile {
-    width: .1px;
-    height: .1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
 .upload__btn {
-    display: inline-block;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    min-width: 116px;
-    padding: 5px;
-    transition: all .3s ease;
-    cursor: pointer;
-    border: 2px solid;
-    background-color: #4045ba;
-    border-color: #4045ba;
-    border-radius: 10px;
-    line-height: 26px;
-    font-size: 14px;
+  display: inline-block;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  min-width: 116px;
+  padding: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid;
+  background-color: #4045ba;
+  border-color: #4045ba;
+  border-radius: 10px;
+  line-height: 26px;
+  font-size: 14px;
 }
 
 .upload__btn > p {
@@ -2220,19 +2221,19 @@ footer .credits {
 }
 
 .upload__btn:hover {
-    background-color: unset;
-    color: #4045ba;
-    transition: all .3s ease;
+  background-color: unset;
+  color: #4045ba;
+  transition: all 0.3s ease;
 }
 
 .upload__btn-box {
-   margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .upload__img-wrap {
   display: flex;
-      flex-wrap: wrap;
-      margin: 0 -10px;
+  flex-wrap: wrap;
+  margin: 0 -10px;
 }
 
 .upload__img-box {
@@ -2243,20 +2244,20 @@ footer .credits {
 
 .upload__img-close {
   width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        text-align: center;
-        line-height: 24px;
-        z-index: 1;
-        cursor: pointer;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  line-height: 24px;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .upload__img-close::after {
-  content: '\2716';
+  content: "\2716";
   font-size: 14px;
   color: white;
 }
@@ -2268,4 +2269,3 @@ footer .credits {
   position: relative;
   padding-bottom: 100%;
 }
- 
