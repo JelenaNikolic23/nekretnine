@@ -106,7 +106,6 @@ function LocalOverviewPage(props) {
 
   return (
     <>
-      console.log(forSale, "ovde");
       <PageIntro data={pageIntroProps} />
       <section className="property-single nav-arrow-b">
         <div className="container">
