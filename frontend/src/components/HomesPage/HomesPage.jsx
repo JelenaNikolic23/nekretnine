@@ -48,6 +48,7 @@ function HomesPage() {
 
     const flatsAndHouses = response.data.data.map((item) => {
       let imageUrl = "";
+      console.log(imageUrl, imageUrl);
       if (item.attributes.pictures.data.length > 0) {
         imageUrl = item.attributes.pictures.data[0].attributes.url;
       }
@@ -75,6 +76,7 @@ function HomesPage() {
       currentPage: responsePagination.page,
       total: responsePagination.pageCount,
     });
+
     hideLoader();
   }
 
@@ -91,14 +93,14 @@ function HomesPage() {
       {items.length !== 0 && (
         <form className="m-5">
           <div className="form-group row">
-            <div className="col-9 text-end">
+            <div className="col-9 text-end" style={{ width: "60%" }}>
               <label className="form-text">Sort by</label>
             </div>
             <div className="col-3 text-right">
               <select className="form-control" onChange={sortBy}>
                 <option value=""></option>
-                <option value="price-asc">Cena rastuce</option>
-                <option value="price-desc">Cena opadajuce</option>
+                <option value="price-asc">Cena rastuće</option>
+                <option value="price-desc">Cena opadajuće</option>
               </select>
             </div>
           </div>

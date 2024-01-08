@@ -145,6 +145,18 @@ function getLocals(page = 1, searchOptions) {
     filteringOptions["filters[surface][$lt]"] = searchOptions?.maxKvadratura;
   }
 
+  if (searchOptions?.parkingMesto) {
+    filteringOptions["filters[parkingPlace]"] = true;
+  }
+
+  if (searchOptions?.zajednickaProstorija) {
+    filteringOptions["filters[sharedRoom]"] = true;
+  }
+
+  if (searchOptions?.stanje) {
+    filteringOptions["filters[state]"] = searchOptions.stanje;
+  }
+
   if (searchOptions?.oprema) {
     filteringOptions["filters[equipmentIncluded]"] = true;
   }
@@ -182,17 +194,15 @@ function getLocals(page = 1, searchOptions) {
   }
 
   if (searchOptions?.sortByPrice) {
-    console.log(searchOptions?.sortByPrice);
     if (searchOptions.sortByPrice.includes("asc")) {
-      filteringOptions["sort[0]"] = "price";
+      filteringOptions["sort[0]"] = "price:asc";
     } else if (searchOptions.sortByPrice.includes("desc")) {
-      filteringOptions["sort[0]"] = "-price";
+      filteringOptions["sort[0]"] = "-price:desc";
     }
   }
-
-  const queryParams = jQuery.param(filteringOptions);
-
-  return axios.get("http://localhost:1337/api/real-estates?" + queryParams);
+  return axios.get(
+    "http://localhost:1337/api/real-estates?" + jQuery.param(filteringOptions)
+  );
 }
 
 function getSingleLocal(homeId) {
