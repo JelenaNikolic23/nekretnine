@@ -48,7 +48,7 @@ function HomesPage() {
 
     const flatsAndHouses = response.data.data.map((item) => {
       let imageUrl = "";
-      console.log(imageUrl, imageUrl);
+
       if (item.attributes.pictures.data.length > 0) {
         imageUrl = item.attributes.pictures.data[0].attributes.url;
       }
