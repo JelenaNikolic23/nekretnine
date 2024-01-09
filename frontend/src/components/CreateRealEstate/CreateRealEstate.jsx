@@ -562,52 +562,53 @@ export default function CreateRealEstate(props) {
             </>
           )}
         </div>
-
-        <div className="row mb-3">
-          <div
-            className="col-4 d-flex justify-content-start"
-            style={{ columnGap: "5px" }}
-          >
-            <input
-              type="checkbox"
-              className="form-check-input mr-2"
-              id="internet"
-              name="internet"
-              onChange={handleCheckProperyChanged}
-            />
-            <label htmlFor="internet" className="form-check-label">
-              Internet
-            </label>
-          </div>
-          <div
-            className="col-4 d-flex justify-content-start"
-            style={{ columnGap: "5px" }}
-          >
-            <input
-              type="checkbox"
-              className="form-check-input mr-2"
-              id="opticalNetwork"
-              name="opticalNetwork"
-              onChange={handleCheckProperyChanged}
-            />
-            <label htmlFor="opticalNetwork" className="form-check-label">
-              Optička mreža
-            </label>
-          </div>
-          <div
-            className="col-4 d-flex justify-content-start"
-            style={{ columnGap: "5px" }}
-          >
-            <input
-              type="checkbox"
-              className="form-check-input mr-2"
-              id="phone"
-              name="phone"
-              onChange={handleCheckProperyChanged}
-            />
-            <label htmlFor="phone" className="form-check-label">
-              Fiksni telefon
-            </label>
+        <div className="form-check mb-3">
+          <div className="row mb-3">
+            <div
+              className="col-4 d-flex justify-content-start"
+              style={{ columnGap: "5px" }}
+            >
+              <input
+                type="checkbox"
+                className="form-check-input mr-2"
+                id="internet"
+                name="internet"
+                onChange={handleCheckProperyChanged}
+              />
+              <label htmlFor="internet" className="form-check-label">
+                Internet
+              </label>
+            </div>
+            <div
+              className="col-4 d-flex justify-content-start"
+              style={{ columnGap: "5px" }}
+            >
+              <input
+                type="checkbox"
+                className="form-check-input mr-2"
+                id="opticalNetwork"
+                name="opticalNetwork"
+                onChange={handleCheckProperyChanged}
+              />
+              <label htmlFor="opticalNetwork" className="form-check-label">
+                Optička mreža
+              </label>
+            </div>
+            <div
+              className="col-4 d-flex justify-content-start"
+              style={{ columnGap: "5px" }}
+            >
+              <input
+                type="checkbox"
+                className="form-check-input mr-2"
+                id="phone"
+                name="phone"
+                onChange={handleCheckProperyChanged}
+              />
+              <label htmlFor="phone" className="form-check-label">
+                Fiksni telefon
+              </label>
+            </div>
           </div>
         </div>
 

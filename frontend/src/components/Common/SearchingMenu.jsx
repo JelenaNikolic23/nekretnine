@@ -301,6 +301,7 @@ export default function SearchingMenu() {
                         </div>
                       </div>
 
+                      {/* kupatila
                       <div className="col-md-6 mb-2">
                         <div className="form-group mt-3">
                           <label className="pb-2" htmlFor="bathrooms">
@@ -317,8 +318,7 @@ export default function SearchingMenu() {
                             <option value="3">03</option>
                           </select>
                         </div>
-                      </div>
-
+                      </div> */}
                       <div className="col-md-6 mb-2">
                         <div className="form-group mt-3">
                           <label className="pb-2" htmlFor="state">
@@ -336,7 +336,6 @@ export default function SearchingMenu() {
                           </select>
                         </div>
                       </div>
-
                       <div className="col-md-6 mb-2">
                         <div className="form-group mt-3">
                           <label className="pb-2" htmlFor="floorNumber">
@@ -351,38 +350,34 @@ export default function SearchingMenu() {
                           />
                         </div>
                       </div>
-
-                      <div>
-                        <div className="col-6 form-check">
-                          <input
-                            type="checkbox"
-                            id="chekcboxParkingMesto"
-                            className="form-check-input"
-                            ref={parkingMestoRef}
-                          />
-                          <label className="form-label">Parking mesto</label>
-                        </div>
-
-                        <div className="col-6 form-check">
-                          <input
-                            type="checkbox"
-                            id="checkboxOstava"
-                            className="form-check-input"
-                            ref={ostavaRef}
-                          />
-                          <label className="form-label">Ostava</label>
-                        </div>
-                        <div className="col-6 form-check">
-                          <input
-                            type="checkbox"
-                            id="checkboxZajednickaProstorija"
-                            className="form-check-input"
-                            ref={zajednickaProstorijaRef}
-                          />
-                          <label className="form-label">
-                            Zajednička prostorija
-                          </label>
-                        </div>
+                      <div className="col-6 form-check">
+                        <input
+                          type="checkbox"
+                          id="chekcboxParkingMesto"
+                          className="form-check-input"
+                          ref={parkingMestoRef}
+                        />
+                        <label className="form-label">Parking mesto</label>
+                      </div>
+                      <div className="col-6 form-check">
+                        <input
+                          type="checkbox"
+                          id="checkboxOstava"
+                          className="form-check-input"
+                          ref={ostavaRef}
+                        />
+                        <label className="form-label">Ostava</label>
+                      </div>
+                      <div className="col-6 form-check">
+                        <input
+                          type="checkbox"
+                          id="checkboxZajednickaProstorija"
+                          className="form-check-input"
+                          ref={zajednickaProstorijaRef}
+                        />
+                        <label className="form-label">
+                          Zajednička prostorija
+                        </label>
                       </div>
                     </>
                   )}

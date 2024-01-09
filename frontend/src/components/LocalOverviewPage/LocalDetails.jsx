@@ -83,8 +83,8 @@ function LocalDetails(props) {
           </div>
           <div className="amenities-list color-text-a text-start">
             <ul className="list-a no-margin">
-              {props.local.equipmentIncluded && <li>Ukljucena oprema</li>}
-              {props.local.helperWarehouse && <li>Pomocni prostor</li>}
+              {props.local.equipmentIncluded && <li>Uključena oprema</li>}
+              {props.local.helperWarehouse && <li>Pomoćni prostor</li>}
               {props.local.ventilation && <li>Ventilacija</li>}
               {props.local.internet && <li>Internet</li>}
               {props.local.phone && <li>Fiksni telefon</li>}
